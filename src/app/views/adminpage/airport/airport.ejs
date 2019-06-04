@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     
-<!-- Mirrored from coderthemes.com/adminto/vertical_dark/form-elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2019 13:18:57 GMT -->
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +11,9 @@
 
         <title>P/D - Admin Dashboard </title>
 
-        <%-include ../include/css.ejs%>
+        <!-- Core css -->
+        <%-include ../../include/css%>
+
         <script src="js/modernizr.min.js"></script>
 
     </head>
@@ -24,12 +25,12 @@
         <div id="wrapper">
 
             <!-- Top Bar Start -->
-            <%-include ../partials/top-bar.ejs%>
+            <%-include ../../partials/top-bar.ejs%>
             <!-- Top Bar End -->
 
 
             <!-- ========== Left Sidebar Start ========== -->
-            <%-include ../partials/left-side-bar.ejs%>
+            <%-include ../../partials/left-side-bar.ejs%>
             <!-- Left Sidebar End -->
 
 
@@ -44,35 +45,83 @@
 
                         <div class="row">
                             <div class="col-12">
+                                <div class="card-box">
+                                    <h3 class="m-t-0">Thông tin sân bay</h3>
+                                    <p class="text-muted m-b-30 font-14">
+                                        <code>Thêm mới</code> thông tin các sân bay
+                                    </p>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="p-20">
+                                                <form role="form">
+
+                                                    <div class="form-group row">
+                                                        <label class="col-2 col-form-label">Mã sân bay</label>
+                                                        <div class="col-10">
+                                                            <input type="text" class="form-control" placeholder="Mã sân bay" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-2 col-form-label">Tên sân bay</label>
+                                                        <div class="col-10">
+                                                            <input type="text" class="form-control" placeholder="Tên sân bay" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-2 col-form-label">Mã dịa điểm</label>
+                                                        <div class="col-10">
+                                                            <input type="text" class="form-control" placeholder="Mã địa điểm" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-2 col-form-label">Địa điểm</label>
+                                                        <div class="col-10">
+                                                            <input type="text" class="form-control" placeholder="Địa điểm" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <button type="submit" class="btn btn-primary">Lưu</button>
+
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- end row -->
+
+                               
+                                </div> <!-- end card-box -->
+                            </div><!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-12">
                                 <div class="card-box table-responsive">
-                                    <h4 class="m-t-0 header-title">Bảng khởi hành</h4>
+                                    <h4 class="m-t-0 header-title">Sân bay</h4>
                                     <p class="text-muted font-14 m-b-30">
-                                        Danh sách Chuyến bay hiện có
+                                        Danh sách sân bay hiện có
                                     </p>
 
                                     <table id="datatable" class="table table-bordered">
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Tên chuyến bay</th>
-                                            <th>Sân bay đi</th>
-                                            <th>Sân bay đến</th>
-                                            <th>Khởi hành</th>
-                                            <th>Hạ cánh</th>
-                                            <th>Thời gian bay</th>
-                                            <th>SL ghế hạng 1</th>
+                                            <th>Tên sân bay</th>
+                                            <th>Mã địa điểm</th>
+                                            <th>Địa điểm</th>
                                             <th>Chức năng</th>
                                         </tr>
                                         </thead>
                                         <tr>
                                             <td>1</td>
                                             <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
+                                            <td>VSC</td>
+                                            <td>Lon don</td>                               
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-xm">
                                                     <i class="fa fa-edit"></i>
@@ -85,12 +134,8 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
+                                            <td>VSC</td>
+                                            <td>Lon don</td>    
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-xm">
                                                     <i class="fa fa-edit"></i>
@@ -103,12 +148,9 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
+                                            <td>VSC</td>
+                                            <td>Lon don</td>    
+                            
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-xm">
                                                     <i class="fa fa-edit"></i>
@@ -121,12 +163,9 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
+                                            <td>VSC</td>
+                                            <td>Lon don</td>    
+                            
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-xm">
                                                     <i class="fa fa-edit"></i>
@@ -139,12 +178,9 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
+                                            <td>VSC</td>
+                                            <td>Lon don</td>    
+                            
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-xm">
                                                     <i class="fa fa-edit"></i>
@@ -157,12 +193,9 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
+                                            <td>VSC</td>
+                                            <td>Lon don</td>    
+                            
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-xm">
                                                     <i class="fa fa-edit"></i>
@@ -175,12 +208,9 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
+                                            <td>VSC</td>
+                                            <td>Lon don</td>    
+                            
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-xm">
                                                     <i class="fa fa-edit"></i>
@@ -193,12 +223,9 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
+                                            <td>VSC</td>
+                                            <td>Lon don</td>    
+                            
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-xm">
                                                     <i class="fa fa-edit"></i>
@@ -211,12 +238,9 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
+                                            <td>VSC</td>
+                                            <td>Lon don</td>    
+                            
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-xm">
                                                     <i class="fa fa-edit"></i>
@@ -229,12 +253,9 @@
                                         <tr>
                                             <td>1</td>
                                             <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
+                                            <td>VSC</td>
+                                            <td>Lon don</td>    
+                            
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-primary btn-xm">
                                                     <i class="fa fa-edit"></i>
@@ -254,12 +275,12 @@
                         </div> 
                         <!-- end row -->
 
+
                     </div> <!-- container -->
 
                 </div> <!-- content -->
 
-            <%-include ../partials/bottom-bar.ejs%>
-
+            <%-include ../../partials/bottom-bar.ejs%>
 
             </div>
 
@@ -268,18 +289,20 @@
             <!-- End Right content here -->
             <!-- ============================================================== -->
 
-
-            <!-- Right Sidebar -->
-            <%-include ../partials/right-side-bar.ejs%>
-            <!-- /Right-bar -->
-
         </div>
         <!-- END wrapper -->
 
+    <!-- Core js -->
+    <%-include ../../include/js.ejs%>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-    <%-include ../include/js.ejs%>
+            // Default Datatable
+            $('#datatable').DataTable();
+        });
+    </script>
 
     </body>
 
-<!-- Mirrored from coderthemes.com/adminto/vertical_dark/form-elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2019 13:18:57 GMT -->
 </html>

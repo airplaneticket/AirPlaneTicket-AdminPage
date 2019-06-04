@@ -2,12 +2,11 @@ module.exports = routers => {
     routers.use('/',require('./adminpage/index'));
     
     //Thao tác đối với chuyến bay
-    routers.use('/',require('./flight/new-flight'));
-    routers.use('/',require('./flight/edit-flight'));
-    routers.use('/',require('./flight/del-flight'));
+    routers.use('/',require('./flight/flight'));
 
     //Thao tác đối với sân bay
-    routers.use('/',require('./airport/new-airport'));
-    routers.use('/',require('./airport/edit-airport'));
-    routers.use('/',require('./airport/del-airport'));
+    routers.use('/',require('./airport/airport'));
+
+    //Thao tác đối với khách hàng
+    routers.use('/',require('./customer/customer'));
 }

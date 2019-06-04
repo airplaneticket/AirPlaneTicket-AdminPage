@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/edit-airport',(req, res) => {
-    res.render('adminpage/airport/edit-airport.ejs');
+router.get('/flight',(req, res) => {
+    res.render('adminpage/flight/flight.ejs');
 })
 
 module.exports= router;
