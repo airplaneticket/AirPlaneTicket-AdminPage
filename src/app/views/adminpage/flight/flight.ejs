@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     
-<!-- Mirrored from coderthemes.com/adminto/vertical_dark/form-elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2019 13:18:57 GMT -->
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +10,10 @@
         <link rel="shortcut icon" href="images/favicon.ico">
 
         <title>P/D - Admin Dashboard </title>
+        
+        <!-- Core css -->
+        <%-include ../../include/css%>
 
-        <%-include ../include/css.ejs%>
         <script src="js/modernizr.min.js"></script>
 
     </head>
@@ -24,12 +25,12 @@
         <div id="wrapper">
 
             <!-- Top Bar Start -->
-            <%-include ../partials/top-bar.ejs%>
+            <%-include ../../partials/top-bar.ejs%>
             <!-- Top Bar End -->
 
 
             <!-- ========== Left Sidebar Start ========== -->
-            <%-include ../partials/left-side-bar.ejs%>
+            <%-include ../../partials/left-side-bar.ejs%>
             <!-- Left Sidebar End -->
 
 
@@ -44,10 +45,112 @@
 
                         <div class="row">
                             <div class="col-12">
+                                <div class="card-box">
+                                    <h3 class="m-t-0">Thông tin chuyến bay</h3>
+                                    <p class="text-muted m-b-30 font-14">
+                                        <code>Thêm mới</code> thông tin các chuyến bay
+                                    </p>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="p-20">
+                                                <form role="form">
+
+                                                    <div class="form-group row">
+                                                        <label class="col-2 col-form-label">Mã chuyến bay</label>
+                                                        <div class="col-10">
+                                                            <input type="text" class="form-control" placeholder="Mã chuyến bay" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-2 col-form-label">Tên chuyến bay</label>
+                                                        <div class="col-10">
+                                                            <input type="text" class="form-control" placeholder="Tên chuyến bay" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label class="col-form-label">Sân bay đi</label>
+                                                            <select class="custom-select form-control">
+                                                                <option>Nội bài (HNA)</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label class="col-form-label">Sân bay đến</label>
+                                                            <select class="custom-select form-control">
+                                                                <option>Nội bài (HNA)</option>
+                                                                <option>2</option>
+                                                                <option>3</option>
+                                                                <option>4</option>
+                                                                <option>5</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                  
+                                                    <div class="form-group row">
+                                                        <label class="col-2 col-form-label">Khởi hành</label>
+                                                        <div class="col-5">
+                                                            <input class="form-control" type="time" name="time">
+                                                        </div>
+                                                        <div class="col-5">
+                                                            <input class="form-control" type="date" name="date">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-2 col-form-label">Thời gian bay</label>
+                                                        <div class="col-md-10">
+                                                            <input class="form-control" type="time" name="time">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-2 col-form-label">Hạ cánh</label>
+                                                        <div class="col-5">
+                                                            <input class="form-control" type="time" name="time">
+                                                        </div>
+                                                        <div class="col-5">
+                                                            <input class="form-control" type="date" name="date">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <div class="form-group col-md-6">
+                                                            <label class="col-form-label">Số lượng ghế hạng 1</label>
+                                                            <input class="form-control" type="number" name="number">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label class="col-form-label">Số lượng ghế hạng 2</label>
+                                                            <input class="form-control" type="number" name="number">
+                                                        </div>
+                                                    </div>
+
+                                                    <button type="submit" class="btn btn-primary">Thêm mới</button>
+
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- end row -->
+
+                                </div> <!-- end card-box -->
+                            </div><!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-12">
                                 <div class="card-box table-responsive">
-                                    <h4 class="m-t-0 header-title">Bảng khởi hành</h4>
+                                    <h4 class="m-t-0 header-title">Sân bay</h4>
                                     <p class="text-muted font-14 m-b-30">
-                                        Danh sách Chuyến bay hiện có
+                                        Danh sách sân bay hiện có
                                     </p>
 
                                     <table id="datatable" class="table table-bordered">
@@ -258,8 +361,7 @@
 
                 </div> <!-- content -->
 
-            <%-include ../partials/bottom-bar.ejs%>
-
+            <%-include ../../partials/bottom-bar.ejs%>
 
             </div>
 
@@ -268,18 +370,20 @@
             <!-- End Right content here -->
             <!-- ============================================================== -->
 
-
-            <!-- Right Sidebar -->
-            <%-include ../partials/right-side-bar.ejs%>
-            <!-- /Right-bar -->
-
         </div>
         <!-- END wrapper -->
+    
+    <!-- Core js -->
+    <%-include ../../include/js.ejs%>
+        
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-
-    <%-include ../include/js.ejs%>
+            // Default Datatable
+            $('#datatable').DataTable();
+        });
+    </script>
 
     </body>
 
-<!-- Mirrored from coderthemes.com/adminto/vertical_dark/form-elements.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Mar 2019 13:18:57 GMT -->
 </html>
