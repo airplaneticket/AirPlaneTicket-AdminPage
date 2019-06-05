@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    
+
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,33 +54,36 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="p-20">
-                                                <form role="form">
-
+                                                <form action = "/airport/add" method="POST">
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Mã sân bay</label>
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" placeholder="Mã sân bay" value="">
+                                                            <input name = "airportCode" type="text" class="form-control" placeholder="Mã sân bay"
+                                                            value="<%if(typeof inputData === "object"){%><%-inputData.airportCode%><%}%>">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label class="col-2 col-form-label">Tên sân bay</label>
+                                                        <label  class="col-2 col-form-label">Tên sân bay</label>
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" placeholder="Tên sân bay" value="">
+                                                            <input name="airportName" type="text" class="form-control" placeholder="Tên sân bay"
+                                                            value="<%if(typeof inputData === "object"){%><%-inputData.airportName%><%}%>">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label class="col-2 col-form-label">Mã dịa điểm</label>
+                                                        <label class="col-2 col-form-label">Mã địa điểm</label>
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" placeholder="Mã địa điểm" value="">
+                                                            <input name="locationCode" type="text" class="form-control" placeholder="Mã địa điểm"
+                                                            value="<%if(typeof inputData === "object"){%><%-inputData.locationCode%><%}%>">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Địa điểm</label>
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" placeholder="Địa điểm" value="">
+                                                            <input name="locationName" type="text" class="form-control" placeholder="Địa điểm"
+                                                            value="<%if(typeof inputData === "object"){%><%-inputData.locationName%><%}%>">
                                                         </div>
                                                     </div>
 
@@ -92,8 +95,6 @@
 
                                     </div>
                                     <!-- end row -->
-
-                               
                                 </div> <!-- end card-box -->
                             </div><!-- end col -->
                         </div>
@@ -110,169 +111,24 @@
                                     <table id="datatable" class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Mã sân bay</th>
                                             <th>Tên sân bay</th>
                                             <th>Mã địa điểm</th>
                                             <th>Địa điểm</th>
                                             <th>Chức năng</th>
                                         </tr>
                                         </thead>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>VSC</td>
-                                            <td>Lon don</td>                               
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>VSC</td>
-                                            <td>Lon don</td>    
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>VSC</td>
-                                            <td>Lon don</td>    
-                            
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>VSC</td>
-                                            <td>Lon don</td>    
-                            
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>VSC</td>
-                                            <td>Lon don</td>    
-                            
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>VSC</td>
-                                            <td>Lon don</td>    
-                            
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>VSC</td>
-                                            <td>Lon don</td>    
-                            
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>VSC</td>
-                                            <td>Lon don</td>    
-                            
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>VSC</td>
-                                            <td>Lon don</td>    
-                            
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>VSC</td>
-                                            <td>Lon don</td>    
-                            
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
 
                                         <tbody>
-                                       
+                                        <!--airport item-->
+                                        <%if(typeof airports === "object" && airports.length>0){%>
+                                            <%-include ../../partials/airport-infor-item.ejs%>
+                                        <%}%>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                         <!-- end row -->
 
 
@@ -291,10 +147,12 @@
 
         </div>
         <!-- END wrapper -->
-
+    <%if(messages.notify){%>
+        <%-include ../../partials/notifycation.ejs%>
+    <%}%>
     <!-- Core js -->
     <%-include ../../include/js.ejs%>
-    
+
     <script type="text/javascript">
         $(document).ready(function () {
 
