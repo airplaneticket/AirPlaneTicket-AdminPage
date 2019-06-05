@@ -1,12 +1,12 @@
 module.exports = routers => {
-    routers.use('/',require('./adminpage/index'));
-    
+    routers.use('/', require('./adminpage/index'));
+
     //Thao tác đối với chuyến bay
-    routers.use('/',require('./flight/flight'));
+    routers.use('/flight', require('./flight/flight'));
 
     //Thao tác đối với sân bay
-    routers.use('/',require('./airport/airport'));
+    routers.use('/airport', require('./airport/airport'));
 
     //Thao tác đối với khách hàng
-    routers.use('/',require('./customer/customer'));
+    routers.use('/customer', require('./customer/customer'));
 }

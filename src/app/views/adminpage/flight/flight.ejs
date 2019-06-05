@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    
+
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="images/favicon.ico">
 
         <title>P/D - Admin Dashboard </title>
-        
+
         <!-- Core css -->
         <%-include ../../include/css%>
 
@@ -59,21 +59,21 @@
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Mã chuyến bay</label>
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" placeholder="Mã chuyến bay" value="">
+                                                            <input name="flightId" type="text" class="form-control" placeholder="Mã chuyến bay" value="">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Tên chuyến bay</label>
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" placeholder="Tên chuyến bay" value="">
+                                                            <input name="flightName" type="text" class="form-control" placeholder="Tên chuyến bay" value="">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label class="col-form-label">Sân bay đi</label>
-                                                            <select class="custom-select form-control">
+                                                            <select name="flightFromAir" class="custom-select form-control">
                                                                 <option>Nội bài (HNA)</option>
                                                                 <option>2</option>
                                                                 <option>3</option>
@@ -92,7 +92,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                  
+
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Khởi hành</label>
                                                         <div class="col-5">
@@ -349,12 +349,12 @@
                                         </tr>
 
                                         <tbody>
-                                       
+
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                         <!-- end row -->
 
                     </div> <!-- container -->
@@ -372,10 +372,10 @@
 
         </div>
         <!-- END wrapper -->
-    
+
     <!-- Core js -->
     <%-include ../../include/js.ejs%>
-        
+
     <script type="text/javascript">
         $(document).ready(function () {
 
