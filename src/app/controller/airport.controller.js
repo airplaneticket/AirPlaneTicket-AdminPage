@@ -28,6 +28,6 @@ module.exports.deleteAirport = async(req, res) => {
         req.flash('notify', notify);
         res.redirect('/airport');
     } catch (err) {
-
+        res.status(500).send('Server error');
     }
 }

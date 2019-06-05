@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
-router.get('/', (req, res) => {
-    res.render('adminpage/customer/customer.ejs');
-})
+
+const customerControler = require('../../controller/customer.controller');
+
+router.get('/', customerControler.getCustomer);
+
+router.post('/delete', customerControler.deleteCustomer);
+
 module.exports = router
