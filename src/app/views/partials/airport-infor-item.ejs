@@ -6,17 +6,17 @@
     <td><%-item.locationCode%></td>
     <td><%-item.locationName%></td>
     <form action="/airport/edit" method="POST" style="display: inline-block !important;">
-    <input type="hidden" value="<%-item._id%>" name="airportObjectId">
-    <td class="text-center">
-    <button type="submit" name="editAirport" class="btn btn-primary btn-xm">
-    <i class="fa fa-edit"></i>
-    </button>
+        <input type="hidden" value="<%-item._id%>" name="airportObjectId">
+        <td class="text-center">
+        <button type="submit" name="editAirport" class="btn btn-primary btn-xm">
+        <i class="fa fa-edit"></i>
+        </button>
     </form>
     <form action="/airport/delete" method="POST" style="display: inline-block !important;">
-    <input type="hidden" value="<%-item._id%>" name="airportObjectId">
-    <button type="submit" name="deleteAirport" class="btn btn-danger btn-xm">
-    <i class="fa fa-trash"></i>
-    </button>
+        <input type="hidden" value="<%-item._id%>" name="airportObjectId">
+        <button type="submit" name="deleteAirport" class="btn btn-danger btn-xm">
+        <i class="fa fa-trash"></i>
+        </button>
     </form>
 
 </td>

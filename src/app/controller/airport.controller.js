@@ -31,3 +31,14 @@ module.exports.deleteAirport = async(req, res) => {
 
     }
 }
+
+module.exports.editAirport = async(req, res) => {
+    try {
+        await airportModel.deleteOne({ _id: req.body.airportObjectId });
+        let notify = "Xóa sân bay thành công"
+        req.flash('notify', notify);
+        res.redirect('/airport');
+    } catch (err) {
+
+    }
+}
