@@ -1,0 +1,22 @@
+<%if(typeof users === 'object' && users.length>0){%>
+    <%for(let i=0;i<users.length;i++){%>
+        <tr>
+            <td><%=i+1%></td>
+            <td><%=users[i].fullname%></td>
+            <td><%=users[i].gender%></td>
+            <td><%=users[i].identityNumber%></td>
+            <td><%=users[i].age%></td>
+            <td><%=users[i].email%></td>
+            <td><%=users[i].phone%></td>
+            <td><%=users[i].address%></td>
+            <td class="text-center">
+            <form action="/customer/delete" method="POST">
+                <input type="hidden" value="<%=users[i]._id%>" name="userObjectId">
+                <button type="submit" class="btn btn-danger btn-xm">
+                <i class="fa fa-trash"></i>
+                </button>
+            </form>
+            </td>
+        </tr>
+    <%}%>
+<%}%>
