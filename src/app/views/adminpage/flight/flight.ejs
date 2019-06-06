@@ -121,15 +121,24 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <div class="form-group col-md-6">
-                                                            <label class="col-form-label">Số lượng ghế hạng 1</label>
-                                                            <input class="form-control" type="number" name="number">
+
+                                                        <label class="col-2 col-form-label">Số lượng hạng ghế</label>
+                                                        <div class="col-4">
+                                                            <!-- Button trigger modal -->
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#soLuongHangGhe">
+                                                            Số lượng hạng ghế
+                                                            </button>
                                                         </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label class="col-form-label">Số lượng ghế hạng 2</label>
-                                                            <input class="form-control" type="number" name="number">
+
+                                                        <label class="col-2 col-form-label">Sân bay trung gian</label>
+                                                        <div class="col-4">
+                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sanBayTrungGian">
+                                                            Số lượng hạng ghế
+                                                            </button>
                                                         </div>
+
                                                     </div>
+
 
                                                     <button type="submit" class="btn btn-primary">Thêm mới</button>
 
@@ -352,6 +361,7 @@
 
                                         </tbody>
                                     </table>
+
                                 </div>
                             </div>
                         </div>
@@ -372,6 +382,65 @@
 
         </div>
         <!-- END wrapper -->
+ 
+
+    <!-- Modal Hang Ghe -->
+    <div class="modal fade" id="soLuongHangGhe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Thông tin hạng ghế</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon3">Hạng ghế</span>
+                            </div>
+                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal San Bay Trung Gian -->
+    <div class="modal fade" id="sanBayTrungGian" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Thông tin sân bay trung gian</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="col-form-label">Sân bay trung</label>
+                            <select name="flightFromAir" class="custom-select form-control">
+                                <option>Nội bài (HNA)</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-form-label">Thời gian ở sân bay</label>
+                            <input class="form-control" type="time" name="time">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Core js -->
     <%-include ../../include/js.ejs%>
