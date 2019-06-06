@@ -26,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'src', 'app', 'public')));
 app.use('/airport', express.static(path.join(__dirname, 'src', 'app', 'public')));
+app.use('/report', express.static(path.join(__dirname, 'src', 'app', 'public')));
 app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(session);
 app.use(flash());
