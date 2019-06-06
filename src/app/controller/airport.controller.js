@@ -46,7 +46,6 @@ module.exports.saveEditAirport = async(req, res) => {
     try {
         let saveAirportInfor = req.saveAirportInfor;
         let airport = await airportModel.findOne({ airportCode: saveAirportInfor.airportCode });
-        console.log(saveAirportInfor);
         _.assign(airport, saveAirportInfor);
         airport.save();
         req.flash('notify', "Cập nhật thông tin thành công");
