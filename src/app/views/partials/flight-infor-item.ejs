@@ -1,14 +1,15 @@
 <%if(typeof flights === 'object' && flights.length>0){%>
     <%for(item of flights){%>
 <tr>
-    <td>item.</td>
-    <td>Regional Director</td>
-    <td>London</td>
-    <td>Hanoi</td>
-    <td>2011/03/21</td>
-    <td>2011/03/21</td>
-    <td>05</td>
-    <td>12</td>
+    <td><%=item.flightId%></td>
+    <td><%=item.flightName%></td>
+    <td><%=item.from%></td>
+    <td><%=item.destination%></td>
+    <td><%=item.flightDate%></td>
+    <td><%=item.flightTime%></td>
+    <td>
+    <%=item.totalSeat%>
+    </td>
     <td class="text-center">
         <button type="button" class="btn btn-primary btn-xm">
             <i class="fa fa-edit"></i>

@@ -43,6 +43,10 @@ let flightSchema = new mongoose.Schema({
         default: [],
         required: true
     },
+    totalSeat: {
+        type: Number,
+        required: true
+    },
     priceOfSeatType: {
         type: Object,
         default: [],
