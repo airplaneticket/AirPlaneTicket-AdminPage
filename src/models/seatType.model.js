@@ -4,6 +4,10 @@ let seatTypeSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
+    },
+    seatTypeCode: {
+        type: String,
+        required: true
     }
 })
 
