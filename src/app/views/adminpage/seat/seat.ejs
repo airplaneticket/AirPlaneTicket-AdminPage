@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="P/D - Admin Dashboard ">
+        <meta name="author" content="P/D - Admin Dashboard ">
+
+        <link rel="shortcut icon" href="images/favicon.ico">
+
+        <title>P/D - Admin Dashboard </title>
+
+        <!-- Core css -->
+        <%-include ../../include/css%>
+
+        <script src="js/modernizr.min.js"></script>
+
+    </head>
+
+
+    <body class="fixed-left">
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <%-include ../../partials/top-bar.ejs%>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <%-include ../../partials/left-side-bar.ejs%>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-box">
+                                    <h3 class="m-t-0">Thông tin các hạng ghế</h3>
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="p-20">
+                                                <form role="form">
+
+                                                    <div class="form-group row">
+                                                        <label class="col-2 col-form-label">Mã hạng ghế</label>
+                                                        <div class="col-10">
+                                                            <input name="seatId" type="text" class="form-control" placeholder="Mã hạng ghế" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="col-2 col-form-label">Tên hạng ghế</label>
+                                                        <div class="col-10">
+                                                            <input name="seatName" type="text" class="form-control" placeholder="Tên hạng ghế" value="">
+                                                        </div>
+                                                    </div>
+
+                                                    <button type="submit" class="btn btn-primary">Thêm mới</button>
+
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- end row -->
+
+                                </div> <!-- end card-box -->
+                            </div><!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-box table-responsive">
+                                    <h4 class="m-t-0 header-title">Hạng ghế</h4>
+                                    <p class="text-muted font-14 m-b-30">
+                                        Danh sách hạng ghế hiện có
+                                    </p>
+
+                                    <table id="datatable" class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Mã hạng ghế</th>
+                                            <th>Tên hạng ghế</th>
+                                            <th>Chức năng</th>
+                                        </tr>
+                                        </thead>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Regional Director</td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-primary btn-xm">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-xm">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Regional Director</td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-primary btn-xm">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-xm">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Regional Director</td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-primary btn-xm">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-xm">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Regional Director</td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-primary btn-xm">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-xm">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Regional Director</td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-primary btn-xm">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-xm">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Regional Director</td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-primary btn-xm">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-xm">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Regional Director</td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-primary btn-xm">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-xm">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Regional Director</td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chinhSuaHangGhe">
+                                                    <i class="fa fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-danger btn-xm">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+            <%-include ../../partials/bottom-bar.ejs%>
+
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+        </div>
+        <!-- END wrapper -->
+
+    <!-- Modal Hang Ghe -->
+    <div class="modal fade" id="chinhSuaHangGhe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Thông tin hạng ghế</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group col-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon3">Mã hạng ghế</span>
+                            </div>
+                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon3">Tên hạng ghế</span>
+                            </div>
+                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                        </div>
+                    </div>
+                    <div class="form-group col-12">
+                        <button type="button" class="btn btn-primary float-right">Cập nhật</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Core js -->
+    <%-include ../../include/js.ejs%>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // Default Datatable
+            $('#datatable').DataTable();
+        });
+    </script>
+
+    </body>
+
+</html>
