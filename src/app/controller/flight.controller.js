@@ -15,6 +15,7 @@ module.exports.getFlight = async(req, res) => {
     });
 }
 
+
 module.exports.editMaxMiddleAirport = async(req, res) => {
     try {
         if (_.isEmpty(req.body.maxMiddleAirport)) {
