@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGODB_URL, { useNewUrlParser: true, useFindAndMod
 
 const app = express();
 const session = expressSession({
-    key: 'userSessionId',
+    key: 'adminSessionId',
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'src', 'app', 'public')));
 app.use('/airport', express.static(path.join(__dirname, 'src', 'app', 'public')));
 app.use('/report', express.static(path.join(__dirname, 'src', 'app', 'public')));
 app.use('/seat', express.static(path.join(__dirname, 'src', 'app', 'public')));
+app.use('/admin', express.static(path.join(__dirname, 'src', 'app', 'public')));
 app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(session);
 app.use(flash());

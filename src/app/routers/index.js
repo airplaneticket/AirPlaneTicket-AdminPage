@@ -1,4 +1,10 @@
+const systemMiddleware = require('../middleware/system.middleware');
+
 module.exports = routers => {
+
+    routers.use(systemMiddleware.hasSessionNotFoundUser);
+    routers.use('/admin', require('./admin/admin'));
+    routers.use(systemMiddleware.requireLogin);
     routers.use('/', require('./adminpage/index'));
 
     //Thao tác đối với chuyến bay
@@ -12,7 +18,8 @@ module.exports = routers => {
 
     routers.use('/report', require('./report/report'));
 
-    routers.use('/login', require('./login/login'));
-
     routers.use('/seat', require('./seat/seat'));
+    routers.use((req, res) => {
+        res.status(404).send('404 error');
+    })
 }
