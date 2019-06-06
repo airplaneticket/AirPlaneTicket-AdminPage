@@ -49,6 +49,9 @@
                                     <h3 class="m-t-0">Thông tin chuyến bay</h3>
                                     <p class="text-muted m-b-30 font-14">
                                         <code>Thêm mới</code> thông tin các chuyến bay
+                                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#sanBayTrungGianToiDa">
+                                        Sân bay trung gian tối đa
+                                        </button>
                                     </p>
 
                                     <div class="row">
@@ -69,6 +72,7 @@
                                                             <input name="flightName" type="text" class="form-control" placeholder="Tên chuyến bay" value="">
                                                         </div>
                                                     </div>
+
 
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
@@ -96,7 +100,7 @@
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Khởi hành</label>
                                                         <div class="col-5">
-                                                            <input class="form-control" type="time" name="time">
+                                                            <input class="form-control" type="time" name="time" data-date-format="dd mm yyyy">
                                                         </div>
                                                         <div class="col-5">
                                                             <input class="form-control" type="date" name="date">
@@ -110,15 +114,6 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group row">
-                                                        <label class="col-2 col-form-label">Hạ cánh</label>
-                                                        <div class="col-5">
-                                                            <input class="form-control" type="time" name="time">
-                                                        </div>
-                                                        <div class="col-5">
-                                                            <input class="form-control" type="date" name="date">
-                                                        </div>
-                                                    </div>
 
                                                     <div class="form-group row">
 
@@ -133,7 +128,7 @@
                                                         <label class="col-2 col-form-label">Sân bay trung gian</label>
                                                         <div class="col-4">
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sanBayTrungGian">
-                                                            Số lượng hạng ghế
+                                                            Sân bay trung gian
                                                             </button>
                                                         </div>
 
@@ -164,201 +159,21 @@
 
                                     <table id="datatable" class="table table-bordered">
                                         <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Tên chuyến bay</th>
-                                            <th>Sân bay đi</th>
-                                            <th>Sân bay đến</th>
-                                            <th>Khởi hành</th>
-                                            <th>Hạ cánh</th>
-                                            <th>Thời gian bay</th>
-                                            <th>SL ghế hạng 1</th>
-                                            <th>Chức năng</th>
-                                        </tr>
+                                            <tr>
+                                                <th>Mã chuyến bay</th>
+                                                <th>Tên chuyến bay</th>
+                                                <th>Sân bay đi</th>
+                                                <th>Sân bay đến</th>
+                                                <th>Ngày khởi hành</th>
+                                                <th>Thời gian bay</th>
+                                                <th>Số lượng ghế</th>
+                                                <th>Chức năng</th>
+                                            </tr>
                                         </thead>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>London</td>
-                                            <td>Hanoi</td>
-                                            <td>2011/03/21</td>
-                                            <td>2011/03/21</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                            <td class="text-center">
-                                                <button type="button" class="btn btn-primary btn-xm">
-                                                    <i class="fa fa-edit"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xm">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+
 
                                         <tbody>
-
+                                            <%include ../../partials/flight-infor-item%>
                                         </tbody>
                                     </table>
 
@@ -382,7 +197,7 @@
 
         </div>
         <!-- END wrapper -->
- 
+
 
     <!-- Modal Hang Ghe -->
     <div class="modal fade" id="soLuongHangGhe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -400,7 +215,11 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon3">Hạng ghế</span>
                             </div>
-                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                            <input type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Số lượng ghế">
+                            <div class="input-group-prepend ml-2">
+                                <span class="input-group-text" id="basic-addon3">Giá</span>
+                            </div>
+                            <input type="number" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Giá">
                         </div>
                     </div>
                 </div>
@@ -423,7 +242,7 @@
                         <div class="form-group col-md-6">
                             <label class="col-form-label">Sân bay trung</label>
                             <select name="flightFromAir" class="custom-select form-control">
-                                <option>Nội bài (HNA)</option>
+                                <option>Sân bay trung gian</option>
                                 <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
@@ -439,10 +258,33 @@
             </div>
         </div>
     </div>
-
-
+        <!-- Modal San Bay Trung Gian  Toi Da-->
+<div class="modal fade" id="sanBayTrungGianToiDa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Thông tin sân bay trung gian tối đa</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                <form action="/flight/editMaxMiddleAirport" method="POST">
+                    <div class="form-group col-12">
+                        <label class="col-form-label">Số sân bay trung gian tối đa</label>
+                        <input name="maxMiddleAirport" type="number" class="form-control" value="<%=maxMiddleAirport%>%>">
+                    </div>
+                    <div class="form-group col-12 ">
+                        <button type="submit" class="btn btn-primary float-right">Lưu</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Core js -->
+    <%-include ../../partials/notifycation.ejs%>
     <%-include ../../include/js.ejs%>
 
     <script type="text/javascript">

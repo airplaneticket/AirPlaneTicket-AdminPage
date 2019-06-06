@@ -2,7 +2,7 @@ const airportModel = require('../../models/airport.model');
 const formatData = require('../../services/formatData');
 const _ = require('lodash');
 
-module.exports.addAirport = async(req, res, next) => {
+module.exports.isNotEmpty = (req, res, next) => {
     let inputData = {
         airportCode: req.body.airportCode,
         airportName: req.body.airportName,
@@ -18,6 +18,18 @@ module.exports.addAirport = async(req, res, next) => {
         error = 'Vui lòng nhập Tên sân bay';
     if (_.isEmpty(inputData.airportCode))
         error = 'Vui lòng nhập Mã sân bay';
+    if (typeof error === 'string') {
+        req.flash('error', error);
+        res.redirect('/airport');
+        return;
+    }
+    req.inputData = inputData;
+    next();
+}
+
+module.exports.addAirport = async(req, res, next) => {
+    let inputData = req.inputData;
+    let error;
     let airport = await airportModel.find({ airportCode: inputData.airportCode });
     if (airport.length > 0) {
         error = 'Đã có sân bay này trong dữ liệu'
@@ -32,20 +44,8 @@ module.exports.addAirport = async(req, res, next) => {
 }
 
 module.exports.saveEditAirport = async(req, res, next) => {
-    let inputData = {
-        airportCode: req.body.airportCode,
-        airportName: req.body.airportName,
-        locationCode: req.body.locationCode,
-        locationName: req.body.locationName
-    };
+    let inputData = req.inputData;
     let error;
-    if (_.isEmpty(inputData.locationName))
-        error = 'Vui lòng nhập Tên địa điểm';
-    if (_.isEmpty(inputData.locationCode))
-        error = 'Vui lòng nhập Mã địa điểm';
-    if (_.isEmpty(inputData.airportName))
-        error = 'Vui lòng nhập Tên sân bay';
-
     let airport = await airportModel.findOne({ airportCode: inputData.airportCode });
 
     if (inputData.airportName === airport.airportName &&

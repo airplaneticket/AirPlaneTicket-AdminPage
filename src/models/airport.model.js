@@ -16,7 +16,7 @@ let airportSchema = new mongoose.Schema({
     locationName: {
         type: String,
         required: true
-    }
+    },
 });
 
 
