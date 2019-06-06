@@ -9,4 +9,6 @@ module.exports = routers => {
 
     //Thao tác đối với khách hàng
     routers.use('/customer', require('./customer/customer'));
+
+    routers.use('/report', require('./report/report'));
 }

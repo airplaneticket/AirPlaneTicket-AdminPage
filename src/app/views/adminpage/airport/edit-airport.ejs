@@ -39,7 +39,7 @@
             <!-- Start right Content here -->
             <!-- ============================================================== -->
 
-            
+
             <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
@@ -50,34 +50,28 @@
                             <div class="col-12">
 
                                 <div class="card-box">
-
-                                    <h3 class="m-t-0">
-                                        Thông tin sân bay
-                                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#sanBayTrungGian">
-                                        Sân bay trung gian tối đa
-                                        </button>
-                                    </h3>
                                     <p class="text-muted m-b-30 font-14">
-                                        <code>Thêm mới</code> thông tin các sân bay
+                                        <code>Cập nhật</code> thông tin các sân bay
                                     </p>
 
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="p-20">
-                                                <form action = "/airport/add" method="POST">
+                                                <form action="/airport/saveEdit" method="POST">
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Mã sân bay</label>
                                                         <div class="col-10">
                                                             <input name = "airportCode" type="text" class="form-control" placeholder="Mã sân bay"
-                                                            value="<%if(typeof inputData === "object"){%><%-inputData.airportCode%><%}%>">
+                                                            value="<%if(typeof airport === "object"){%><%-airport.airportCode%><%}%>" readonly>
                                                         </div>
+
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label  class="col-2 col-form-label">Tên sân bay</label>
                                                         <div class="col-10">
                                                             <input name="airportName" type="text" class="form-control" placeholder="Tên sân bay"
-                                                            value="<%if(typeof inputData === "object"){%><%-inputData.airportName%><%}%>">
+                                                            value="<%if(typeof airport === "object"){%><%-airport.airportName%><%}%>">
                                                         </div>
                                                     </div>
 
@@ -85,7 +79,7 @@
                                                         <label class="col-2 col-form-label">Mã địa điểm</label>
                                                         <div class="col-10">
                                                             <input name="locationCode" type="text" class="form-control" placeholder="Mã địa điểm"
-                                                            value="<%if(typeof inputData === "object"){%><%-inputData.locationCode%><%}%>">
+                                                            value="<%if(typeof airport === "object"){%><%-airport.locationCode%><%}%>">
                                                         </div>
                                                     </div>
 
@@ -93,11 +87,12 @@
                                                         <label class="col-2 col-form-label">Địa điểm</label>
                                                         <div class="col-10">
                                                             <input name="locationName" type="text" class="form-control" placeholder="Địa điểm"
-                                                            value="<%if(typeof inputData === "object"){%><%-inputData.locationName%><%}%>">
+                                                            value="<%if(typeof airport === "object"){%><%-airport.locationName%><%}%>">
                                                         </div>
                                                     </div>
 
                                                     <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                                    <a href="/airport" class="btn btn-danger">Hủy</a>
 
                                                 </form>
                                             </div>
@@ -106,7 +101,7 @@
                                     </div>
                                     <!-- end row -->
 
-                                </div> 
+                                </div>
                                 <!-- end card-box -->
                             </div>
                             <!-- end col -->
@@ -149,10 +144,7 @@
             </div>
         </div>
     </div>
-
-    <%if(messages.notify){%>
         <%-include ../../partials/notifycation.ejs%>
-    <%}%>
     <!-- Core js -->
     <%-include ../../include/js.ejs%>
 

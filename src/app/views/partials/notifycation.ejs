@@ -4,9 +4,20 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body text-center">
-            <i class="fas fa-exclamation-triangle text-danger" style="font-size: 64px; padding-bottom: 1rem;"></i>
-            <!--<i class="fas fa-check-circle text-success" style="font-size: 64px; padding-bottom: 1rem"></i>-->
+            <i class="fas fa-check-circle text-success" style="font-size: 64px; padding-bottom: 1rem"></i>
                 <p><%=messages.notify%></p>
+            </div>
+        </div>
+        </div>
+    </div>
+<%}%>
+<%if(messages.error){%>
+    <div class="modal fade" id="modelRegisterSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+            <i class="fas fa-exclamation-triangle text-danger" style="font-size: 64px; padding-bottom: 1rem;"></i>
+                <p><%=messages.error%></p>
             </div>
         </div>
         </div>
