@@ -11,4 +11,8 @@ module.exports = routers => {
     routers.use('/customer', require('./customer/customer'));
 
     routers.use('/report', require('./report/report'));
+
+    routers.use('/login',require('./login/login'));
+
+    routers.use('/seat',require('./seat/seat'));
 }
