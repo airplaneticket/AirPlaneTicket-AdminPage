@@ -1,0 +1,21 @@
+<%if(typeof seats === 'object'){%>
+<%for(item of seats){%>
+<tr>
+    <td><%=item.seatTypeCode%></td>
+    <td><%=item.name%></td>
+    <td class="text-center">
+        <form action="/seat/edit" method ="POST" style="display: inline-block;">
+            <input type="hidden" name="seatTypeId" value="<%=item._id%>">
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#chinhSuaHangGhe">
+            <i class="fa fa-edit"></i>
+        </button></form>
+        <form action="/seat/delete" method ="POST"  style="display: inline-block;">
+            <input type="hidden" name="seatTypeId" value="<%=item._id%>">
+            <button type="submit" class="btn btn-danger btn-xm">
+                <i class="fa fa-trash"></i>
+            </button>
+        </form>
+    </td>
+</tr>
+<%}%>
+<%}%>

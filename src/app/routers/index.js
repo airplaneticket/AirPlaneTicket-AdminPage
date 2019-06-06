@@ -12,7 +12,7 @@ module.exports = routers => {
 
     routers.use('/report', require('./report/report'));
 
-    routers.use('/login',require('./login/login'));
+    routers.use('/login', require('./login/login'));
 
-    routers.use('/seat',require('./seat/seat'));
+    routers.use('/seat', require('./seat/seat'));
 }

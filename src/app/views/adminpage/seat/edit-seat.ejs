@@ -51,19 +51,22 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="p-20">
-                                                <form role="form" action="/seat/add" method="POST">
-
+                                                <form role="form" action="/seat/saveEdit" method="POST">
+                                                    <input name="seatTypeId" type="hidden" class="form-control" placeholder="Mã hạng ghế"
+                                                    value="<%if(typeof seat === 'object'){%><%=seat._id%><%}%>"">
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Mã hạng ghế</label>
                                                         <div class="col-10">
-                                                            <input name="seatTypeCode" type="text" class="form-control" placeholder="Mã hạng ghế" value="">
+                                                            <input name="seatTypeCode" type="text" class="form-control" placeholder="Mã hạng ghế"
+                                                            value="<%if(typeof seat === 'object'){%><%=seat.seatTypeCode%><%}%>">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Tên hạng ghế</label>
                                                         <div class="col-10">
-                                                            <input name="name" type="text" class="form-control" placeholder="Tên hạng ghế" value="">
+                                                            <input name="name" type="text" class="form-control" placeholder="Tên hạng ghế"
+                                                            value="<%if(typeof seat === 'object'){%><%=seat.name%><%}%>">
                                                         </div>
                                                     </div>
 
@@ -79,34 +82,6 @@
                                 </div> <!-- end card-box -->
                             </div><!-- end col -->
                         </div>
-                        <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card-box table-responsive">
-                                    <h4 class="m-t-0 header-title">Hạng ghế</h4>
-                                    <p class="text-muted font-14 m-b-30">
-                                        Danh sách hạng ghế hiện có
-                                    </p>
-
-                                    <table id="datatable" class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Mã hạng ghế</th>
-                                            <th>Tên hạng ghế</th>
-                                            <th>Chức năng</th>
-                                        </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <%include ../../partials/seat-infor-item.ejs%>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end row -->
 
                     </div> <!-- container -->
 
@@ -121,20 +96,8 @@
             <!-- ============================================================== -->
 
         </div>
-        <!-- END wrapper -->
+        <%-include ../../include/js.ejs%>
 
-    <!-- Modal Hang Ghe -->
-
-    <%include ../../partials/notifycation.ejs%>
-    <!-- Core js -->
-    <%-include ../../include/js.ejs%>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            // Default Datatable
-            $('#datatable').DataTable();
-        });
-    </script>
 
     </body>
 
