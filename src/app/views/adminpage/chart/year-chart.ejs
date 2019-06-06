@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="P/D - Admin Dashboard ">
+        <meta name="author" content="P/D - Admin Dashboard ">
+
+        <link rel="shortcut icon" href="images/favicon.ico">
+
+        <title>P/D - Admin Dashboard </title>
+
+        <!-- Core css -->
+        <%-include ../../include/css%>
+
+        <script src="js/modernizr.min.js"></script>
+
+    </head>
+
+
+    <body class="fixed-left">
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+            <!-- Top Bar Start -->
+            <%-include ../../partials/top-bar.ejs%>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <%-include ../../partials/left-side-bar.ejs%>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-box table-responsive">
+                                    <h3 class="m-t-0">Thông kê doanh thu 
+                                        
+                                    </h3>
+
+                                    <table id="datatable" class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Tháng</th>
+                                            <th>Số chuyến bay</th>
+                                            <th>Doanh thu</th>
+                                            <th>Tỉ lệ</th>
+                                        </tr>
+                                        </thead>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Regional Director</td>
+                                            <td>05</td>
+                                            <td>12</td>
+                                            <td>12</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Regional Director</td>
+                                            <td>05</td>
+                                            <td>12</td>
+                                            <td>12</td>
+                                        </tr>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+            <%-include ../../partials/bottom-bar.ejs%>
+
+            </div>
+
+
+            <!-- ============================================================== -->
+            <!-- End Right content here -->
+            <!-- ============================================================== -->
+
+        </div>
+        <!-- END wrapper -->
+
+    <!-- Core js -->
+    <%-include ../../include/js.ejs%>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // Default Datatable
+            $('#datatable').DataTable();
+        });
+    </script>
+
+    </body>
+
+</html>

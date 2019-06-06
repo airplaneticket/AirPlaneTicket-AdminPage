@@ -39,7 +39,7 @@
             <!-- Start right Content here -->
             <!-- ============================================================== -->
 
-
+            
             <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
@@ -97,7 +97,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <button type="submit" class="btn btn-primary">Thêm mới</button>
+                                                    <button type="submit" class="btn btn-primary">Cập nhật</button>
 
                                                 </form>
                                             </div>
@@ -106,45 +106,13 @@
                                     </div>
                                     <!-- end row -->
 
-                                </div>
+                                </div> 
                                 <!-- end card-box -->
                             </div>
                             <!-- end col -->
 
                         </div>
                         <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card-box table-responsive">
-                                    <h4 class="m-t-0 header-title">Sân bay</h4>
-                                    <p class="text-muted font-14 m-b-30">
-                                        Danh sách sân bay hiện có
-                                    </p>
-
-                                    <table id="datatable" class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th>Mã sân bay</th>
-                                            <th>Tên sân bay</th>
-                                            <th>Mã địa điểm</th>
-                                            <th>Địa điểm</th>
-                                            <th>Chức năng</th>
-                                        </tr>
-                                        </thead>
-
-                                        <tbody>
-                                        <!--airport item-->
-                                        <%if(typeof airports === "object" && airports.length>0){%>
-                                            <%-include ../../partials/airport-infor-item.ejs%>
-                                        <%}%>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end row -->
-
 
                     </div> <!-- container -->
 
@@ -181,17 +149,12 @@
             </div>
         </div>
     </div>
+
+    <%if(messages.notify){%>
         <%-include ../../partials/notifycation.ejs%>
+    <%}%>
     <!-- Core js -->
     <%-include ../../include/js.ejs%>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-
-            // Default Datatable
-            $('#datatable').DataTable();
-        });
-    </script>
 
     </body>
 
