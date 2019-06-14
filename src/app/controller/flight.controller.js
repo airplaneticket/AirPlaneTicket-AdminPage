@@ -1,9 +1,14 @@
 const flightModel = require('../../models/flight.model');
+const seatTypeModel = require("../../models/seatType.model");
+const airportModel = require("../../models/airport.model");
 const maxMiddleAirportModel = require('../../models/maxMiddleAirport');
+
 const _ = require('lodash');
 
 module.exports.getFlight = async(req, res) => {
     let flights = await flightModel.find({});
+    let seatTypes = await seatTypeModel.find({});
+    let airports = await airportModel.find({});
     let maxMiddleAirport = await maxMiddleAirportModel.findOne({ id: 'PDAirline' });
     if (maxMiddleAirport == null) {
         let maxMiddleAirport = new maxMiddleAirportModel({ quantity: 2 });
@@ -11,7 +16,9 @@ module.exports.getFlight = async(req, res) => {
     }
     res.render('adminpage/flight/flight.ejs', {
         flights,
-        maxMiddleAirport: maxMiddleAirport.quantity
+        maxMiddleAirport: maxMiddleAirport.quantity,
+        seatTypes,
+        airports
     });
 }
 

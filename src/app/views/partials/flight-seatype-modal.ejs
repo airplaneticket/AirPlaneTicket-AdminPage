@@ -1,0 +1,16 @@
+<%if(typeof seatTypes === 'object' && seatTypes.length>0){%>
+<%for(item of seatTypes){%>
+<div class="form-group col-12">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3"><%=item.name%></span>
+        </div>
+        <input type="number" name="numberOfSeats" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Số lượng ghế"  min="1" max="9999">
+        <div class="input-group-prepend ml-2">
+            <span class="input-group-text" id="basic-addon3">Giá</span>
+        </div>
+        <input type="number" name="priceOfSeats" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Giá"  min="1" max="9999">
+    </div>
+</div>
+<%}%>
+<%}%>
