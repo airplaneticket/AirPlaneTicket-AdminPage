@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const seatTypeModel = require('../../models/seatType.model');
-
+const _ = require('lodash');
 
 module.exports.getSeat = async(req, res) => {
     let seats = await seatTypeModel.find({});
@@ -22,7 +22,7 @@ module.exports.addSeat = async(req, res) => {
 
 module.exports.deleteSeat = async(req, res) => {
     try {
-        await seatTypeModel.deleteOne({ _id: req.body.seatObjectId });
+        await seatTypeModel.deleteOne({ _id: req.body.seatTypeId });
         req.flash("notify", "Xóa hạng ghế thành công");
         res.redirect('/seat');
     } catch (err) {
@@ -45,9 +45,8 @@ module.exports.editSeat = async(req, res) => {
 module.exports.saveEditSeat = async(req, res) => {
     try {
         let saveEditSeatData = req.saveEditSeatData;
-        console.log(saveEditSeatData);
         let seat = await seatTypeModel.findOne({ _id: saveEditSeatData._id });
-        _.assign(seat, inputData);
+        _.assign(seat, saveEditSeatData);
         seat.save();
         req.flash('notify', "Cập nhật hạng ghế thành công");
         res.redirect('/seat');
