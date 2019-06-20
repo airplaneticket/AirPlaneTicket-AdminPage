@@ -62,14 +62,14 @@
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Mã chuyến bay</label>
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" placeholder="Mã chuyến bay" value="">
+                                                            <input name="flightId" type="text" class="form-control" placeholder="Mã chuyến bay" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Tên chuyến bay</label>
                                                         <div class="col-10">
-                                                            <input name="flightName" type="text" class="form-control" placeholder="Tên chuyến bay" value="">
+                                                            <input name="flightName" type="text" class="form-control" placeholder="Tên chuyến bay" required>
                                                         </div>
                                                     </div>
 
@@ -77,7 +77,8 @@
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
                                                             <label class="col-form-label">Sân bay đi</label>
-                                                            <select name="flightFromAir" class="custom-select form-control">
+                                                            <select name="flightFrom" class="custom-select form-control" required>
+                                                                <option>Chọn sân bay đi</option>
                                                                 <%if(typeof airports ==="object" && airports.length>0){%>
                                                                     <%for(item of airports){%>
                                                                         <option><%=item.airportName%></option>
@@ -87,7 +88,8 @@
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label class="col-form-label">Sân bay đến</label>
-                                                            <select class="custom-select form-control">
+                                                            <select name="flightDestination" class="custom-select form-control" required>
+                                                                <option>Chọn sân bay đến</option>
                                                                 <%if(typeof airports ==="object" && airports.length>0){%>
                                                                     <%for(item of airports){%>
                                                                         <option><%=item.airportName%></option>
@@ -100,24 +102,24 @@
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Khởi hành</label>
                                                         <div class="col-5">
-                                                            <input class="form-control" type="time" data-date-format="dd mm yyyy">
+                                                            <input name="flightDepartTime" class="form-control" type="time" min="00:01" max="23:59" required>
                                                         </div>
                                                         <div class="col-5">
-                                                            <input class="form-control" type="date" name="date">
+                                                            <input class="form-control" type="date" name="flightDate" data-date-format="dd mm yyyy" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Thời gian bay</label>
                                                         <div class="col-md-10">
-                                                            <input class="form-control" type="time" >
+                                                            <input name="flightTime" class="form-control" type="Time" required>
                                                         </div>
                                                     </div>
 
 
                                                     <div class="form-group row">
 
-                                                        <label class="col-2 col-form-label">Số lượng hạng ghế</label>
+                                                        <label class="col-2 col-form-label">Số lượng ghế</label>
                                                         <div class="col-4">
                                                             <!-- Button trigger modal -->
                                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#soLuongHangGhe">
@@ -199,6 +201,7 @@
                                                 <th>Sân bay đi</th>
                                                 <th>Sân bay đến</th>
                                                 <th>Ngày khởi hành</th>
+                                                <th>Giờ khởi hành</th>
                                                 <th>Thời gian bay</th>
                                                 <th>Số lượng ghế</th>
                                                 <th>Chức năng</th>

@@ -3,23 +3,24 @@
 <tr>
     <td><%=item.flightId%></td>
     <td><%=item.flightName%></td>
-    <td><%=item.from%></td>
-    <td><%=item.destination%></td>
+    <td><%=item.flightFrom%></td>
+    <td><%=item.flightDestination%></td>
     <td><%=item.flightDate%></td>
+    <td><%=item.flightDepartTime%></td>
     <td><%=item.flightTime%></td>
     <td>
     <%=item.totalSeat%>
     </td>
     <td class="text-center">
         <form action="flight/editFlight" method="POST" style="display:inline-block;">
-            <input type="hidden" name="flightObjectId" value="<%%=item._id>">
-            <button type="button" class="btn btn-primary btn-xm">
+            <input type="hidden" name="flightObjectId" value="<%=item._id%>">
+            <button type="submit" class="btn btn-primary btn-xm">
             <i class="fa fa-edit"></i>
             </button>
         </form>
-        <form action="flight/editFlight" method="POST" style="display:inline-block;">
-            <input type="hidden" name="flightObjectId" value="<%%=item._id>">
-            <button type="button" class="btn btn-danger btn-xm">
+        <form action="flight/deleteFlight" method="POST" style="display:inline-block;">
+            <input type="hidden" name="flightObjectId" value="<%=item._id%>">
+            <button type="submit" class="btn btn-danger btn-xm">
                 <i class="fa fa-trash"></i>
             </button>
         </form>
