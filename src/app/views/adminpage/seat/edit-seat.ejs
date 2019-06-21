@@ -53,12 +53,12 @@
                                             <div class="p-20">
                                                 <form role="form" action="/seat/saveEdit" method="POST">
                                                     <input name="seatTypeId" type="hidden" class="form-control" placeholder="Mã hạng ghế"
-                                                    value="<%if(typeof seat === 'object'){%><%=seat._id%><%}%>"">
+                                                    value="<%if(typeof seat === 'object'){%><%=seat._id%><%}%>">
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Mã hạng ghế</label>
                                                         <div class="col-10">
                                                             <input name="seatTypeCode" type="text" class="form-control" placeholder="Mã hạng ghế"
-                                                            value="<%if(typeof seat === 'object'){%><%=seat.seatTypeCode%><%}%>">
+                                                            value="<%if(typeof seat === 'object'){%><%=seat.seatTypeCode%><%}%>" readonly>
                                                         </div>
                                                     </div>
 
@@ -66,11 +66,11 @@
                                                         <label class="col-2 col-form-label">Tên hạng ghế</label>
                                                         <div class="col-10">
                                                             <input name="name" type="text" class="form-control" placeholder="Tên hạng ghế"
-                                                            value="<%if(typeof seat === 'object'){%><%=seat.name%><%}%>">
+                                                            value="<%if(typeof seat === 'object'){%><%=seat.name%><%}%>" required>
                                                         </div>
                                                     </div>
 
-                                                    <button type="submit" class="btn btn-primary">Thêm mới</button>
+                                                    <button type="submit" class="btn btn-primary">Cập nhật</button>
 
                                                 </form>
                                             </div>

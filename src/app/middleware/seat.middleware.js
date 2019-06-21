@@ -44,10 +44,10 @@ module.exports.addSeat = async(req, res, next) => {
 module.exports.saveEditSeat = async(req, res, next) => {
     let inputData = req.inputData;
     let seat = await seatTypeModel.findById(inputData._id);
-    if (seat) {
-        req.flash('error', "Thông tin hạng ghế không thay đổi");
+    if (seat.name === inputData.name) {
+        req.flash("error", "Thông tin hạng ghê không thay đổi");
         res.redirect('/seat');
-        return;
     }
     req.saveEditSeatData = inputData;
+    next();
 }

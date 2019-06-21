@@ -2,6 +2,9 @@ const adminModel = require('../../models/admin.model');
 
 module.exports.getLogin = async(req, res) => {
     try {
+        if (req.session.admin && req.signedCookies.adminSessionId) {
+            res.redirect('/');
+        }
         let admin = await adminModel.find({});
         if (admin.length === 0) {
             let admin = new adminModel({ username: "adminPD", password: "adminPD" });
@@ -14,13 +17,10 @@ module.exports.getLogin = async(req, res) => {
 }
 
 module.exports.postLogin = async(req, res) => {
-    let inputData = {
-        username: req.body.username,
-        password: req.body.password
-    }
-    admin = await adminModel.findOne({ username: inputData.username });
+    let admin = req.admin;
     req.session.admin = admin;
     req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 7;
+    req.flash("notify", "Đăng nhập thành công");
     res.redirect('/');
 }
 
