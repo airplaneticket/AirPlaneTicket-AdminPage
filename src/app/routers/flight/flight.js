@@ -11,6 +11,8 @@ router.post('/editMaxMiddleAirport', flightController.editMaxMiddleAirport);
 
 router.post('/deleteFlight', flightController.deleteFlight);
 
+router.post('/editFlight', flightController.editFlight);
 
+router.post('/saveEditFlight', flightMiddleware.isRightData, flightMiddleware.saveEditFlight, flightController.saveEditFlight);
 
 module.exports = router;

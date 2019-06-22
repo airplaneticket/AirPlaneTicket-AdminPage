@@ -1,16 +1,26 @@
 <%if(typeof seatTypes === 'object' && seatTypes.length>0){%>
-<%for(item of seatTypes){%>
+<%for(let i=0;i<seatTypes.length;i++){%>
 <div class="form-group col-12">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-            <input type="hidden" name="seatTypes" value="<%=item.name%>">
-            <span class="input-group-text" id="basic-addon3"><%=item.name%></span>
+        <input type="hidden" value="<%=seatTypes[i].seatTypeCode%>" name="numberOfSeatTypes">
+            <span class="input-group-text"  id="basic-addon3"><%=seatTypes[i].name%></span>
         </div>
-        <input type="number" name="numberOfSeats" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Số lượng ghế"  min="1" max="9999">
+        <input type="number" name="numberOfSeats" class="form-control"  aria-describedby="basic-addon3" placeholder="Số lượng ghế"  min="1" max="9999"
+        <%if(typeof flight === 'object'){%>
+            <%for(let j=0;j<flight.numberOfSeatTypes.length;j++){%>
+                <%if(seatTypes[i].seatTypeCode ===  flight.numberOfSeatTypes[j]){%>
+                    value="<%=flight.numberOfSeats[j]%>"
+        <%}}}%>>
         <div class="input-group-prepend ml-2">
             <span class="input-group-text" id="basic-addon3">Giá</span>
         </div>
-        <input type="number" name="priceOfSeats" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Giá"  min="1" max="9999">
+        <input type="number" name="priceOfSeats" class="form-control" placeholder="Giá"
+        <%if(typeof flight === 'object'){%>
+            <%for(let j=0;j<flight.numberOfSeatTypes.length;j++){%>
+                <%if(seatTypes[i].seatTypeCode ===  flight.numberOfSeatTypes[j]){%>
+                    value="<%=flight.priceOfSeats[j]%>"
+        <%}}}%>>
     </div>
 </div>
 <%}%>
