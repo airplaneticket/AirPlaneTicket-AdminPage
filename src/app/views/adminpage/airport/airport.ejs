@@ -95,7 +95,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <button type="submit" class="btn btn-primary">Thêm mới</button>
+                                                    <button id="btn-submit" type="submit" class="btn btn-primary">Thêm mới</button>
 
                                                 </form>
                                             </div>
@@ -160,6 +160,18 @@
         </div>
         <!-- END wrapper -->
 
+    <!-- Modal Vallidate -->
+    <div class="modal fade" id="modeValidate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+            <i class="fas fa-exclamation-triangle text-danger" style="font-size: 64px; padding-bottom: 1rem"></i>
+                <p>Mã sân bay hoặc mã địa điểm không hợp lệ. Vui lòng kiểm tra lại!</p>
+            </div>
+        </div>
+        </div>
+    </div>
+
     <!-- Modal Hang Ghe -->
 
     <%-include ../../partials/notifycation.ejs%>
@@ -169,8 +181,40 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            const reg = new RegExp('^[-a-zA-Z0-9-()]+(\s+[-a-zA-Z0-9-()]+)*$');
+
             // Default Datatable
             $('#datatable').DataTable();
+
+             $("#btn-submit").on('click', function (e) {
+                var airportName = $("input[name=airportName]").val().trim()
+                var locationName = $("input[name=locationName]").val().trim()
+                if(
+                    !reg.test($("input[name=airportCode]").val()) ||
+                    !reg.test($("input[name=locationCode]").val())
+                  )
+                {
+                    $('#modeValidate').modal('show')
+                    e.preventDefault(); 
+                }
+                strValidate(airportName);
+                strValidate(locationName);
+            })
+
+            //Validate
+            function strValidate(str) {
+                var result ='';
+                var strTemp = str.split(' ').filter(strChild => {
+                    if(strChild !== '')
+                        return strChild;
+                })
+                strTemp.forEach(s => {
+                    result+=' ';
+                    result+=s;
+                });
+                result.trim();
+                return result;
+            }
         });
     </script>
 

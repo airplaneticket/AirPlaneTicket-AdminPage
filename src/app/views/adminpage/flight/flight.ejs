@@ -53,130 +53,130 @@
                                         Sân bay trung gian tối đa
                                         </button>
                                     </p>
-                                <form action="/flight/addFlight" method="POST">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="p-20">
-                                                <form role="form">
+                                    <form action="/flight/addFlight" name="formChuyenBay" method="POST" onsubmit="return validateForm()">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="p-20">
+                                                    <form role="form">
 
-                                                    <div class="form-group row">
-                                                        <label class="col-2 col-form-label">Mã chuyến bay</label>
-                                                        <div class="col-10">
-                                                            <input name="flightId" type="text" class="form-control" placeholder="Mã chuyến bay" required>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label class="col-2 col-form-label">Tên chuyến bay</label>
-                                                        <div class="col-10">
-                                                            <input name="flightName" type="text" class="form-control" placeholder="Tên chuyến bay" required>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label class="col-form-label">Sân bay đi</label>
-                                                            <select name="flightFrom" class="custom-select form-control" required>
-                                                                <option>Chọn sân bay đi</option>
-                                                                <%if(typeof airports ==="object" && airports.length>0){%>
-                                                                    <%for(item of airports){%>
-                                                                        <option><%=item.airportName%></option>
-                                                                    <%}%>
-                                                                <%}%>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label class="col-form-label">Sân bay đến</label>
-                                                            <select name="flightDestination" class="custom-select form-control" required>
-                                                                <option>Chọn sân bay đến</option>
-                                                                <%if(typeof airports ==="object" && airports.length>0){%>
-                                                                    <%for(item of airports){%>
-                                                                        <option><%=item.airportName%></option>
-                                                                    <%}%>
-                                                                <%}%>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label class="col-2 col-form-label">Khởi hành</label>
-                                                        <div class="col-5">
-                                                            <input name="flightDepartTime" class="form-control" type="time" min="00:01" max="23:59" required>
-                                                        </div>
-                                                        <div class="col-5">
-                                                            <input class="form-control" type="date" name="flightDate" data-date-format="dd mm yyyy" required>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <label class="col-2 col-form-label">Thời gian bay</label>
-                                                        <div class="col-md-10">
-                                                            <input name="flightTime" class="form-control" type="Time" required>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="form-group row">
-
-                                                        <label class="col-2 col-form-label">Số lượng ghế</label>
-                                                        <div class="col-4">
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#soLuongHangGhe">
-                                                            Số lượng hạng ghế
-                                                            </button>
-                                                        </div>
-
-                                                        <label class="col-2 col-form-label">Sân bay trung gian</label>
-                                                        <div class="col-4">
-                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sanBayTrungGian">
-                                                            Sân bay trung gian
-                                                            </button>
-                                                        </div>
-
-                                                    </div>
-
-
-                                                    <button type="submit" class="btn btn-primary">Thêm mới</button>
-                                                    <!-- Modal Hang Ghe -->
-                                                    <div class="modal fade" id="soLuongHangGhe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Thông tin hạng ghế</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <%-include ../../partials/flight-seatype-modal.ejs%>
-                                                                </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-2 col-form-label">Mã chuyến bay</label>
+                                                            <div class="col-10">
+                                                                <input id="a" name="flightId" type="text" class="form-control" placeholder="Mã chuyến bay" required>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <!-- Modal San Bay Trung Gian -->
-                                                        <div class="modal fade" id="sanBayTrungGian" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+                                                        <div class="form-group row">
+                                                            <label class="col-2 col-form-label">Tên chuyến bay</label>
+                                                            <div class="col-10">
+                                                                <input name="flightName" type="text" class="form-control" placeholder="Tên chuyến bay" required>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label class="col-form-label">Sân bay đi</label>
+                                                                <select name="flightFrom" class="custom-select form-control" required>
+                                                                    <option>Chọn sân bay đi</option>
+                                                                    <%if(typeof airports ==="object" && airports.length>0){%>
+                                                                        <%for(item of airports){%>
+                                                                            <option><%=item.airportName%></option>
+                                                                        <%}%>
+                                                                    <%}%>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label class="col-form-label">Sân bay đến</label>
+                                                                <select name="flightDestination" class="custom-select form-control" required>
+                                                                    <option>Chọn sân bay đến</option>
+                                                                    <%if(typeof airports ==="object" && airports.length>0){%>
+                                                                        <%for(item of airports){%>
+                                                                            <option><%=item.airportName%></option>
+                                                                        <%}%>
+                                                                    <%}%>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label class="col-2 col-form-label">Khởi hành</label>
+                                                            <div class="col-5">
+                                                                <input name="flightDepartTime" class="form-control" type="time" min="00:01" max="23:59" required>
+                                                            </div>
+                                                            <div class="col-5">
+                                                                <input class="form-control" type="date" name="flightDate" data-date-format="dd mm yyyy" required>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group row">
+                                                            <label class="col-2 col-form-label">Thời gian bay</label>
+                                                            <div class="col-md-10">
+                                                                <input name="flightTime" class="form-control" type="Time" required>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="form-group row">
+
+                                                            <label class="col-2 col-form-label">Số lượng ghế</label>
+                                                            <div class="col-4">
+                                                                <!-- Button trigger modal -->
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#soLuongHangGhe">
+                                                                Số lượng hạng ghế
+                                                                </button>
+                                                            </div>
+
+                                                            <label class="col-2 col-form-label">Sân bay trung gian</label>
+                                                            <div class="col-4">
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sanBayTrungGian">
+                                                                Sân bay trung gian
+                                                                </button>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <button type="submit" id="btn-submit" class="btn btn-primary">Thêm mới</button>
+                                                        <!-- Modal Hang Ghe -->
+                                                        <div class="modal fade" id="soLuongHangGhe" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalCenterTitle">Thông tin sân bay trung gian</h5>
+                                                                        <h5 class="modal-title" id="exampleModalCenterTitle">Thông tin hạng ghế</h5>
                                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        <!--Modal item-->
-                                                                        <%-include ../../partials/flight-middle-airport-modal.ejs%>
+                                                                        <%-include ../../partials/flight-seatype-modal.ejs%>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <!-- Modal San Bay Trung Gian -->
+                                                            <div class="modal fade" id="sanBayTrungGian" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalCenterTitle">Thông tin sân bay trung gian</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <!--Modal item-->
+                                                                            <%-include ../../partials/flight-middle-airport-modal.ejs%>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                                                </form>
+                                                    </form>
+                                                </div>
                                             </div>
-                                        </div>
 
-                                    </div>
+                                        </div>
                                     </form>
                                     <!-- end row -->
 
@@ -236,11 +236,21 @@
         <!-- END wrapper -->
 
 
+    <!-- Modal San Bay Trung Gian  Toi Da-->
+    <div class="modal fade" id="modeValidate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+            <i class="fas fa-exclamation-triangle text-danger" style="font-size: 64px; padding-bottom: 1rem"></i>
+                <p>Mã chuyến hoặc tên chuyến bay không hợp lệ. Vui lòng kiểm tra lại!</p>
+            </div>
+        </div>
+        </div>
+    </div>
 
 
-
-        <!-- Modal San Bay Trung Gian  Toi Da-->
-<div class="modal fade" id="sanBayTrungGianToiDa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!-- Modal San Bay Trung Gian  Toi Da-->
+    <div class="modal fade" id="sanBayTrungGianToiDa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"> 
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -271,9 +281,21 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            const reg = new RegExp('^[-a-zA-Z0-9-()]+(\s+[-a-zA-Z0-9-()]+)*$');
             // Default Datatable
             $('#datatable').DataTable();
+            $("#btn-submit").on('click', function (e) {
+                if(
+                    !reg.test($("input[name=flightId]").val()) ||
+                    !reg.test($("input[name=flightName]").val())
+                  )
+                {
+                    $('#modeValidate').modal('show');
+                    e.preventDefault();
+                }
+            })
         });
+       
     </script>
 
     </body>
