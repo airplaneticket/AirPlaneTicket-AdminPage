@@ -1,5 +1,7 @@
 $(document).ready(function(){
-    $('form').parsley();
+    $("#changePassword").on("click", function () {
+       $('#modalChangPassword').modal('show');
+    })
 })
 
 

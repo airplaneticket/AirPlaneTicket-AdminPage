@@ -62,7 +62,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-2 col-form-label">Mã chuyến bay</label>
                                                             <div class="col-10">
-                                                                <input id="a" name="flightId" type="text" class="form-control" placeholder="Mã chuyến bay" required>
+                                                                <input name="flightId" type="text" class="form-control" placeholder="Mã chuyến bay" required>
                                                             </div>
                                                         </div>
 
@@ -193,7 +193,7 @@
                                         Danh sách chuyến bay hiện có
                                     </p>
 
-                                    <table id="datatable" class="table table-bordered">
+                                    <table id="datatable" class="table table-bordered text-center">
                                         <thead>
                                             <tr>
                                                 <th>Mã chuyến bay</th>
@@ -236,8 +236,26 @@
         <!-- END wrapper -->
 
 
-    <!-- Modal San Bay Trung Gian  Toi Da-->
-    <div class="modal fade" id="modeValidate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!-- Modal Thông tin hạng ghế-->
+    <div class="modal fade" id="modalSeatInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Thông tin hạng ghế</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <%-include ../../partials/flight-seatype-modal.ejs%>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Validate-->
+    <div class="modal fade" id="modalValidate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body text-center">
@@ -249,7 +267,7 @@
     </div>
 
 
-    <!-- Modal San Bay Trung Gian  Toi Da-->
+    <!-- Modal Sân bay trung gian tối đa-->
     <div class="modal fade" id="sanBayTrungGianToiDa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"> 
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -274,8 +292,10 @@
         </div>
     </div>
 
-    <!-- Core js -->
+    <%-include ../../partials/change-password.ejs%>
     <%-include ../../partials/notifycation.ejs%>
+
+    <!-- Core js -->
     <%-include ../../include/js.ejs%>
 
     <script type="text/javascript">
@@ -290,9 +310,12 @@
                     !reg.test($("input[name=flightName]").val())
                   )
                 {
-                    $('#modeValidate').modal('show');
+                    $('#modalValidate').modal('show');
                     e.preventDefault();
                 }
+            })
+            $("#seatInfo").on('click', function () {
+                $('#modalSeatInfo').modal('show');
             })
         });
        

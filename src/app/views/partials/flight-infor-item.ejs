@@ -9,13 +9,17 @@
     <td><%=item.flightDepartTime%></td>
     <td><%=item.flightTime%></td>
     <td>
-    <%=item.totalSeat%>
+        <%=item.totalSeat%>
+        &nbsp;
+        <a id="seatInfo" style="cursor: pointer">
+           <i class="fa fa-info-circle text-secondary" style="font-size:16px"></i>
+        </a>
     </td>
     <td class="text-center">
         <form action="/flight/editFlight" method="POST" style="display:inline-block;">
             <input type="hidden" name="flightObjectId" value="<%=item._id%>">
             <button type="submit" class="btn btn-primary btn-xm">
-            <i class="fa fa-edit"></i>
+                <i class="fa fa-edit"></i>
             </button>
         </form>
         <form action="/flight/deleteFlight" method="POST" style="display:inline-block;">
