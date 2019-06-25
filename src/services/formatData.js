@@ -35,4 +35,12 @@ module.exports.formatDataForFlight = async(inputdata) => {
 
     //formart for number of seat
     inputdata.numberOfSeats.map(num => parseInt(num));
+
+    //formart for flightDate
+    let flightDate = inputdata.flightDate.split('-').map(num => parseInt(num));
+    inputdata.flightDate = new Object();
+    inputdata.flightDate.year = flightDate[0];
+    inputdata.flightDate.month = flightDate[1];
+    inputdata.flightDate.day = flightDate[2];
+    console.log(inputdata);
 }

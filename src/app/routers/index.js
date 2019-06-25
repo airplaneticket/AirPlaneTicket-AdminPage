@@ -11,7 +11,5 @@ module.exports = routers => {
     routers.use('/customer', require('./customer/customer'));
     routers.use('/report', require('./report/report'));
     routers.use('/seat', require('./seat/seat'));
-    routers.use((req, res) => {
-        res.status(404).send('404 error');
-    })
+
 }
