@@ -22,7 +22,7 @@ let flightSchema = new mongoose.Schema({
         required: true
     },
     flightDate: {
-        type: String,
+        type: Object,
         required: true
     },
     flightTime: {
