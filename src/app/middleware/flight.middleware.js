@@ -26,7 +26,7 @@ module.exports.isRightData = (req, res, next) => {
         if (!_.isEmpty(inputData.numberOfSeats[i])) {
             isInputSeatType = true;
             if (_.isEmpty(inputData.priceOfSeats[i])) {
-                error = 'Vui lòng nhập giá của hạng ghế ' + inputData.seatTypes[i];
+                error = 'Vui lòng nhập giá của hạng ghế ' + inputData.numberOfSeatTypes[i];
             }
         }
     }

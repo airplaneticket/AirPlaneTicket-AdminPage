@@ -48,11 +48,13 @@
                                 <div class="card-box table-responsive">
                                     <div class="row">
                                         <div class="col-4">
+                                        <form action="/report/month" method="POST" role="form">
                                             <div class="form-group">
                                                 <label for="">Tháng</label>
-                                                <select class="form-control" name="monthReport" id="">
+                                                <select class="form-control" name="selectedMonth">
                                                 <option>1</option>
                                                 <option>2</option>
+                                                <option>3</option>
                                                 <option>4</option>
                                                 <option>5</option>
                                                 <option>6</option>
@@ -64,17 +66,15 @@
                                                 <option>12</option>
                                                 </select>
                                             </div>
+                                            <button type="submit" class="btn btn-primary" style="margin-top: 2rem; display:inline-block;">Hiển thị</button>
                                         </div>
-                                        <div class="col-4">
-                                            <form action="/report/month" action="POST">
-                                            <button type="button" class="btn btn-primary" style="margin-top: 2rem">Hiển thị</button>
-                                            </form>
-                                            &nbsp;
-                                            <form action="/report/month/download" action="POST">
-                                            <button type="button" class="btn btn-primary" style="margin-top: 2rem">Tải về</button>
-                                            </form>
-                                        </div>
-
+                                        </form>
+                                        <form action="/report/month/download" method="POST" style="display:inline-block;">
+                                            <%if(typeof selectedMonth === 'string'){%>
+                                                <input type="hidden" name="downloadReportMonth"value="<%=selectedMonth%>">
+                                            <%}%>
+                                                <button type="submit" class="btn btn-success" style="margin-top: 2rem">Tải về báo cáo</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +85,10 @@
                             <div class="col-12">
                                 <div class="card-box table-responsive">
                                     <h3 class="m-t-0">
-                                        Thông kê doanh thu
+                                        Thống kê doanh thu tháng <%if(typeof selectedMonth === 'string'){%><%=selectedMonth%><%}%>
+
+
+
                                     </h3>
 
                                     <table id="datatable" class="table table-bordered">
@@ -93,27 +96,15 @@
                                         <tr>
                                             <th>STT</th>
                                             <th>Chuyến bay</th>
-                                            <th>Số vé</th>
+                                            <th>Số vé bán ra</th>
+                                            <th>Tổng số ghế</th>
                                             <th>Doanh thu</th>
                                             <th>Tỉ lệ</th>
                                         </tr>
                                         </thead>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                            <td>12</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>05</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                        </tr>
-                                        <tbody>
 
+                                        <tbody>
+                                            <%-include ../../partials/month-report-infor.ejs%>
                                         </tbody>
                                     </table>
                                 </div>
