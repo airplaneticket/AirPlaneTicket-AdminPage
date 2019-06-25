@@ -1,35 +1,45 @@
+const express = require('express');
 const path = require('path');
-const { Parser } = require('json2csv');
+const objectToCSV = require('objects-to-csv');
 const fs = require('fs');
 const moment = require('moment');
-const flightModel = require('../../../models/flight.model')
 
-const express = require('express');
+const reportController = require('../../controller/report.controller');
+const reportMiddleware = require('../../middleware/report.middleware');
+const reportService = require('../../../services/report');
+
 const router = express.Router();
 
-router.get('/month', (req, res) => {
-    res.render('adminpage/report/month-report.ejs');
-})
 
-router.get('/year', (req, res) => {
-    res.render('adminpage/report/year-report.ejs');
-})
+router.get('/month', reportController.getMonthReport);
 
-router.get('/year/download', async(req, res) => {
-    try {
-        let fields = ['Chuyến bay', 'Số vé', 'Doanh thu', 'Tỷ lệ'];
-        let flights = await flightModel.find({}).select('flightName flightDate.year numberOfSeats priceOfSeats');
+router.get('/year', reportController.getYearReport);
 
-        let json2csvParser = new Parser({ fields });
-        let csv = json2csvParser.parse(flights);
-        let datetime = moment().format('ssmmhhDDMMYYYY');
-        let file = path.join(__dirname, '..', '..', 'public', 'report', 'year', "year-report-" + datetime + ".csv");
-        fs.writeFileSync(file, csv)
-        res.download(file);
-    } catch (err) {
-        res.send(err);
+router.post('/month', reportController.postMonthReport);
+
+
+router.post('/month/download', reportMiddleware.postDownloadMonthReport, async(req, res) => {
+    let downloadReportMonth = req.body.downloadReportMonth;
+    let report = [];
+    let flights = await reportService.monthReport(downloadReportMonth);
+    for (flight of flights) {
+        let item = {
+            STT: flight.serial,
+            ChuyenBay: flight.flightName,
+            SoVeBanRa: flight.boughtSeat,
+            TongSoGhe: flight.totalSeat,
+            DoanhThu: flight.income,
+            TyLe: flight.ratio
+        };
+        report.push(item);
     }
-})
+    let test = await new objectToCSV(report).toString();
+    let datetime = moment().format('ssmmhhDDMMYYYY');
+    let file = path.join(__dirname, '..', '..', 'public', 'report', 'month', "month-" + downloadReportMonth + "-report-" + datetime + ".csv");
+    fs.writeFileSync(file, test)
+    res.download(file);
+});
+
 
 
 module.exports = router;

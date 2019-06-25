@@ -1,0 +1,11 @@
+<%if(typeof report === 'object' && report.length>0){%>
+<%for(item of report){%>
+<tr>
+    <td><%=item.serial%></td>
+    <td><%=item.flightName%></td>
+    <td><%=item.boughtSeat%></td>
+    <td><%=item.totalSeat%></td>
+    <td><%=item.income%></td>
+    <td><%=item.ratio%>%</td>
+</tr>
+<%}}%>

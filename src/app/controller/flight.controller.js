@@ -16,7 +16,6 @@ module.exports.getFlight = async(req, res) => {
         let maxMiddleAirport = new maxMiddleAirportModel({ quantity: 2 });
         maxMiddleAirport.save();
     }
-    console.log(flights);
     for (flight of flights) {
         flight.flightDate = flight.flightDate.day + '-' + flight.flightDate.month + '-' + flight.flightDate.year;
     }
@@ -56,6 +55,7 @@ module.exports.addFlight = async(req, res) => {
     } catch (err) {
         res.status(500);
         res.send("Lỗi server hãy tải lại trang");
+        console.log(err);
     }
 }
 
