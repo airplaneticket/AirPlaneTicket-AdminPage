@@ -25,8 +25,20 @@ module.exports.postLogin = async(req, res) => {
 }
 
 module.exports.getLogout = async(req, res) => {
-    delete req.body;
+    req.session.destroy();
     res.clearCookie("adminSessionId");
-    req.flash("notify", "Đã đăng xuất");
     res.redirect('/admin/login');
+}
+
+module.exports.postChangePassword = async(req, res) => {
+    try {
+        let inputData = req.inputData;
+        let admin = await adminModel.findOne({ username: 'adminPD' });
+        admin.password = inputData.newPassword;
+        admin.save();
+        res.redirect('/admin/logout');;
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('sever error');
+    }
 }
