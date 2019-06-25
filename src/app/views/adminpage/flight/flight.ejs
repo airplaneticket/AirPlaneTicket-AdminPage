@@ -203,8 +203,7 @@
                                                 <th>Ngày khởi hành</th>
                                                 <th>Giờ khởi hành</th>
                                                 <th>Thời gian bay</th>
-                                                <th>Số lượng ghế</th>
-                                                <th>Sân bay trung</th>
+                                                <th>Chi Tiết</th>
                                                 <th>Chức năng</th>
                                             </tr>
                                         </thead>
@@ -238,7 +237,7 @@
 
 
     <!-- Modal Thông tin hạng ghế-->
-    <div class="modal fade" id="modalSeatInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="modalSeat" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -269,7 +268,7 @@
 
 
     <!-- Modal Sân bay trung gian tối đa-->
-    <div class="modal fade" id="sanBayTrungGianToiDa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"> 
+    <div class="modal fade" id="sanBayTrungGianToiDa" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -309,17 +308,19 @@
                 if(
                     !reg.test($("input[name=flightId]").val()) ||
                     !reg.test($("input[name=flightName]").val())
-                  )
+                )
                 {
                     $('#modalValidate').modal('show');
                     e.preventDefault();
                 }
             })
-            $("#seatInfo").on('click', function () {
-                $('#modalSeatInfo').modal('show');
+
+            $("#datatable td a").on('click', function () {
+
+                    $('#modalSeat').modal('show');
             })
         });
-       
+
     </script>
 
     </body>

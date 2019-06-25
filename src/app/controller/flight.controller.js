@@ -16,6 +16,10 @@ module.exports.getFlight = async(req, res) => {
         let maxMiddleAirport = new maxMiddleAirportModel({ quantity: 2 });
         maxMiddleAirport.save();
     }
+    console.log(flights);
+    for (flight of flights) {
+        flight.flightDate = flight.flightDate.day + '-' + flight.flightDate.month + '-' + flight.flightDate.year;
+    }
     res.render('adminpage/flight/flight.ejs', {
         flights,
         maxMiddleAirport: maxMiddleAirport.quantity,
