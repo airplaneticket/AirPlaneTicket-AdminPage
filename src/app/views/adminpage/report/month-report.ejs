@@ -50,7 +50,7 @@
                                         <div class="col-4">
                                             <div class="form-group">
                                                 <label for="">Tháng</label>
-                                                <select class="form-control" name="" id="">
+                                                <select class="form-control" name="monthReport" id="">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>4</option>
@@ -66,8 +66,15 @@
                                             </div>
                                         </div>
                                         <div class="col-4">
+                                            <form action="/report/month" action="POST">
                                             <button type="button" class="btn btn-primary" style="margin-top: 2rem">Hiển thị</button>
+                                            </form>
+                                            &nbsp;
+                                            <form action="/report/month/download" action="POST">
+                                            <button type="button" class="btn btn-primary" style="margin-top: 2rem">Tải về</button>
+                                            </form>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -78,9 +85,9 @@
                             <div class="col-12">
                                 <div class="card-box table-responsive">
                                     <h3 class="m-t-0">
-                                        Thông kê doanh thu 
+                                        Thông kê doanh thu
                                     </h3>
-                              
+
                                     <table id="datatable" class="table table-bordered">
                                         <thead>
                                         <tr>
@@ -113,7 +120,7 @@
                             </div>
                         </div>
                         <!-- end row -->
-                   
+
 
                     </div> <!-- container -->
 
