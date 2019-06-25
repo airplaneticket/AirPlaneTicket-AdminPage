@@ -29,20 +29,20 @@ let flightSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    flightMiddleAirPort: {
+    flightMiddleAirport: {
         type: Object,
         default: []
     },
-    flightMiddleAirPortTime: {
+    flightMiddleAirportTime: {
         type: Object,
         default: []
     },
-    seatTypes: {
+    numberOfSeatTypes: {
         type: Object,
         default: [],
         required: true
     },
-    numberOfSeat: {
+    numberOfSeats: {
         type: Object,
         default: [],
         required: true

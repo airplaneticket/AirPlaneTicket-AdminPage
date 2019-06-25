@@ -45,7 +45,6 @@ module.exports.addFlight = async(req, res) => {
     try {
         let inputdata = {...req.body };
         formatData.formatDataForFlight(inputdata);
-
         let flight = new flightModel(inputdata);
         await flight.save();
         req.flash("notify", "Thêm chuyến bay thành công");
@@ -59,7 +58,6 @@ module.exports.addFlight = async(req, res) => {
 module.exports.deleteFlight = async(req, res) => {
     try {
         let flightObjectId = req.body.flightObjectId;
-        console.log(flightObjectId);
         await flightModel.deleteOne({ _id: flightObjectId });
         req.flash("notify", "Xóa chuyến bay thành công");
         res.redirect('/flight');
@@ -67,5 +65,38 @@ module.exports.deleteFlight = async(req, res) => {
         res.status(500);
         res.send("Lỗi server hãy tải lại trang");
         console.log(err);
+    }
+}
+
+module.exports.editFlight = async(req, res) => {
+    try {
+        let flightObjectId = req.body.flightObjectId;
+        let flight = await flightModel.findById(flightObjectId);
+        let seatTypes = await seatTypeModel.find({});
+        let airports = await airportModel.find({});
+        let maxMiddleAirport = await maxMiddleAirportModel.findOne({ id: 'PDAirline' });
+        res.render("adminpage/flight/edit-flight.ejs", {
+            flight,
+            seatTypes,
+            airports,
+            maxMiddleAirport: maxMiddleAirport.quantity
+        });
+    } catch (err) {
+        res.status(500);
+        res.send("Lỗi server hãy tải lại trang");
+        console.log(err);
+    }
+}
+
+module.exports.saveEditFlight = async(req, res) => {
+    try {
+        let inputData = req.inputData;
+        let flight = await flightModel.findOne({ flightId: inputData.flightId });
+        _.assign(flight, inputData);
+        flight.save();
+        req.flash('notify', "Cập nhật thông tin thành công");
+        res.redirect('/flight');
+    } catch (err) {
+
     }
 }

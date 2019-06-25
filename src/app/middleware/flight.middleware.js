@@ -44,6 +44,7 @@ module.exports.isRightData = (req, res, next) => {
         res.redirect('/flight');
         return;
     }
+
     req.inputData = inputData;
     next();
 }
@@ -64,6 +65,7 @@ module.exports.addFlight = async(req, res, next) => {
             totalFlightMiddleAirportTime = splitTime[0] * 60 + splitTime[1];
         }
     }
+
     if (flightTime < totalFlightMiddleAirportTime) {
         req.flash("error", "Thời gian bay bé hơn thời gian ở sân bay trung gian! Xin kiểm tra lại");
         res.redirect('/flight');
@@ -77,4 +79,21 @@ module.exports.addFlight = async(req, res, next) => {
     inputData.flightDate = moment(inputTime).format();
     req.inputData = inputData;
     next();
+}
+
+module.exports.saveEditFlight = async(req, res, next) => {
+    let inputData = {...req.body };
+    let oldData = await flightModel.findOne({ flightId: inputData.flightId });
+    oldData = oldData.toObject();
+    formatData.formatDataForFlight(inputData);
+    delete oldData._id;
+    delete oldData.__v;
+    if (_.isEqual(oldData, inputData)) {
+        req.flash("error", "Thông tin chuyến bay không thay đổi");
+        res.redirect('/flight');
+    } else {
+        req.inputData = inputData;
+        next();
+    }
+
 }

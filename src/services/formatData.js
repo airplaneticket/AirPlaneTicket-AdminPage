@@ -11,11 +11,11 @@ module.exports.formatDataForFlight = async(inputdata) => {
         if (!_.isEmpty(inputdata.numberOfSeats[i])) {
             numberOfSeats.push(parseInt(inputdata.numberOfSeats[i]));
             priceOfSeats.push(parseInt(inputdata.priceOfSeats[i]));
-            seatTypes.push(inputdata.seatTypes[i]);
+            seatTypes.push(inputdata.numberOfSeatTypes[i]);
         }
     }
     inputdata.numberOfSeats = numberOfSeats;
-    inputdata.seatTypes = seatTypes;
+    inputdata.numberOfSeatTypes = seatTypes;
     inputdata.priceOfSeats = priceOfSeats;
     inputdata.totalSeat = numberOfSeats.reduce((a, b) => {
         return a + b;
@@ -33,9 +33,6 @@ module.exports.formatDataForFlight = async(inputdata) => {
     inputdata.flightMiddleAirport = flightMiddleAirport;
     inputdata.flightMiddleAirportTime = flightMiddleAirportTime;
 
-    //format for flightMiddleAirportTime
-    for (let i = 0; i < inputdata.flightMiddleAirportTime.length; i++) {
-        inputdata.flightMiddleAirportTime[i] = inputdata.flightMiddleAirportTime[i].split(':').map(num => parseInt(num));
-        inputdata.flightMiddleAirportTime[i] = inputdata.flightMiddleAirportTime[i][0] * 60 + inputdata.flightMiddleAirportTime[i][1];
-    }
+    //formart for number of seat
+    inputdata.numberOfSeats.map(num => parseInt(num));
 }

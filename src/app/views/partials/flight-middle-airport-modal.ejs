@@ -1,13 +1,50 @@
+<%if(typeof flight === 'object'){%>
+<%let number = flight.flightMiddleAirport.length;%>
+<%let indexAirport = 0;%>
+<%let indexTime = 0;%>
 <%for(let i=0;i<maxMiddleAirport;i++){%>
     <%if(typeof airports === 'object' && airports.length>0){%>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label class="col-form-label">Sân bay trung gian</label>
                 <select name="flightMiddleAirport" class="custom-select form-control">
+                <%if(indexAirport < number){%>
+                    <option selected><%=flight.flightMiddleAirport[indexAirport]%></option>
+                    <%for(item of airports){%>
+                        <%if(item.airportName !== flight.flightMiddleAirport[indexAirport]){%>
+                            <option><%=item.airportName%></option>
+                        <%}%>
+                    <%}%>
+                    <%indexAirport=indexAirport+1;%>
+                <%}else{%>
                     <option>Chọn sân bay trung gian</option>
                     <%for(item of airports){%>
                         <option><%=item.airportName%></option>
-                    <%}%>
+                    <%}}%>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-form-label">Thời gian ở sân bay</label>
+                <input class="form-control" type="time" name="flightMiddleAirportTime"
+                <%if(indexTime < number){%>
+                    value="<%=flight.flightMiddleAirportTime[indexTime]%>"
+                    <%indexTime=indexTime+1;%>
+                <%}%>>
+            </div>
+        </div>
+    <%}%>
+<%}%>
+<%}else{%>
+<%for(let i=0;i<maxMiddleAirport;i++){%>
+    <%if(typeof airports === 'object' && airports.length>0){%>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class="col-form-label">Sân bay trung gian</label>
+                <select name="flightMiddleAirport" class="custom-select form-control">
+                <option>Chọn sân bay trung gian</option>
+                <%for(item of airports){%>
+                    <option><%=item.airportName%></option>
+                <%}%>
                 </select>
             </div>
             <div class="form-group col-md-6">
@@ -16,4 +53,5 @@
             </div>
         </div>
     <%}%>
+<%}%>
 <%}%>
