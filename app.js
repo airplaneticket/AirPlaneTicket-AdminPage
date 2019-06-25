@@ -17,7 +17,8 @@ const session = expressSession({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: {}
+    unset: false,
+    saveUninitialized: false
 });
 app.set('views', path.join(__dirname, 'src', 'app', 'views'));
 app.set('view engine', 'ejs');
