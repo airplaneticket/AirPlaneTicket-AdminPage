@@ -42,40 +42,47 @@
                 <!-- Start content -->
                 <div class="content">
                     <div class="container-fluid">
-
+                         <div class="row">
+                            <div class="col-12">
+                                <div class="card-box table-responsive">
+                                    <div class="row">
+                                        <div class="col-4">
+                                        <form action="/report/year" method="POST" role="form">
+                                            <div class="form-group">
+                                                <label for="">Năm</label>
+                                                <input class="form-control"type="number" min="2019" name="selectedYear">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary" style="margin-top: 2rem; display:inline-block;">Hiển thị</button>
+                                        </div>
+                                        </form>
+                                        <form action="/report/year/download" method="POST" style="display:inline-block;">
+                                            <%if(typeof selectedYear === 'string'){%>
+                                                <input type="hidden" name="downloadReportYear"value="<%=selectedYear%>">
+                                            <%}%>
+                                                <button type="submit" class="btn btn-success" style="margin-top: 2rem">Tải về báo cáo</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="card-box table-responsive">
-                                    <h3 class="m-t-0">Thông kê doanh thu 
-                                        
+                                    <h3 class="m-t-0">Thống kê doanh thu năm <%if(typeof selectedYear==='string'){%><%=selectedYear%><%}%>
+
                                     </h3>
 
                                     <table id="datatable" class="table table-bordered">
                                         <thead>
                                         <tr>
-                                            <th>STT</th>
                                             <th>Tháng</th>
                                             <th>Số chuyến bay</th>
                                             <th>Doanh thu</th>
                                             <th>Tỉ lệ</th>
                                         </tr>
                                         </thead>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                            <td>12</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Regional Director</td>
-                                            <td>05</td>
-                                            <td>12</td>
-                                            <td>12</td>
-                                        </tr>
                                         <tbody>
-
+                                            <%include ../../partials/year-report-infor.ejs%>
                                         </tbody>
                                     </table>
                                 </div>
@@ -99,7 +106,7 @@
 
         </div>
         <!-- END wrapper -->
-        
+
     <%-include ../../partials/notifycation.ejs%>
 
     <!-- Core js -->

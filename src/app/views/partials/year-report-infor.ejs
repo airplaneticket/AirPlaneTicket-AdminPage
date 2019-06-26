@@ -1,0 +1,9 @@
+<%if(typeof report === 'object' && report.length>0){%>
+<%for(item of report){%>
+<tr>
+    <td><%=item.month%></td>
+    <td><%=item.numberOfFlight%></td>
+    <td><%=item.monthIncome%></td>
+    <td><%=item.ratio%>%</td>
+</tr>
+<%}}%>
