@@ -196,6 +196,7 @@
                                     <table id="datatable" class="table table-bordered text-center">
                                         <thead>
                                             <tr>
+                                        
                                                 <th>Mã chuyến bay</th>
                                                 <th>Tên chuyến bay</th>
                                                 <th>Sân bay đi</th>
@@ -203,7 +204,6 @@
                                                 <th>Ngày khởi hành</th>
                                                 <th>Giờ khởi hành</th>
                                                 <th>Thời gian bay</th>
-                                                <th>Chi Tiết</th>
                                                 <th>Chức năng</th>
                                             </tr>
                                         </thead>
@@ -211,6 +211,37 @@
 
                                         <tbody>
                                             <%include ../../partials/flight-infor-item%>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card-box table-responsive">
+                                    <h4 class="m-t-0 header-title">Thông tin chi tiết</h4>
+                                    <p class="text-muted font-14 m-b-30">
+                                        Danh sách thông tin hạng ghế và sân bay trung gian
+                                    </p>
+
+                                    <table id="chitietTable" class="table table-bordered text-center" id="datatable">
+                                        <thead>
+                                            <tr>
+                                                <th>Mã chuyến bay</th>
+                                                <th>Tên chuyến bay</th>
+                                                <th>Tên hạng ghế</th>
+                                                <th>Số lượng ghế</th>
+                                                <th>Sân bay trung gian</th>
+                                                <th>Thời gian dừng</th>
+                                            </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                            <%include ../../partials/fligh-infor-detail%>
                                         </tbody>
                                     </table>
 
@@ -247,7 +278,19 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <%-include ../../partials/flight-seatype-modal.ejs%>
+                   <div class="form-group col-12">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            <input type="hidden" value="" name="numberOfSeatTypes">
+                                <span class="input-group-text"  id="basic-addon3"></span>
+                            </div>
+                            <input type="number" name="numberOfSeats" class="form-control"  aria-describedby="basic-addon3" placeholder="Số lượng ghế"  min="1" max="9999" value="">
+                            <div class="input-group-prepend ml-2">
+                                <span class="input-group-text" id="basic-addon3">Giá</span>
+                            </div>
+                            <input type="number" name="priceOfSeats" class="form-control" placeholder="Giá" value="">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -304,6 +347,7 @@
             const reg = new RegExp('^[-a-zA-Z0-9-()]+(\s+[-a-zA-Z0-9-()]+)*$');
             // Default Datatable
             $('#datatable').DataTable();
+            $('#chitietTable').DataTable();
             $("#btn-submit").on('click', function (e) {
                 if(
                     !reg.test($("input[name=flightId]").val()) ||

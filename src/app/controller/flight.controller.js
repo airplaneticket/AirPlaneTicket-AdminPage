@@ -12,18 +12,37 @@ module.exports.getFlight = async(req, res) => {
     let seatTypes = await seatTypeModel.find({});
     let airports = await airportModel.find({});
     let maxMiddleAirport = await maxMiddleAirportModel.findOne({ id: 'PDAirline' });
+    let detail = [];
     if (maxMiddleAirport == null) {
         let maxMiddleAirport = new maxMiddleAirportModel({ quantity: 2 });
         maxMiddleAirport.save();
     }
     for (flight of flights) {
         flight.flightDate = flight.flightDate.day + '-' + flight.flightDate.month + '-' + flight.flightDate.year;
+        let seatTypes = [];
+        for(item of flight.numberOfSeatTypes)
+        {
+            let temp;
+            temp = await seatTypeModel.findOne({seatTypeCode: item});
+            seatTypes.push(temp.name);
+        }
+        let detailItem = {
+            flightId:flight.flightId,
+            flightName:flight.flightName,
+            numberOfSeatTypes: seatTypes,
+            numberOfSeats: flight.numberOfSeats,
+            priceOfSeats: flight.priceOfSeats,
+            flightMiddleAirport: flight.flightMiddleAirport,
+            flighMiddleAirportTime: flight.flightMiddleAirportTime,
+        };
+        detail.push(detailItem)
     }
     res.render('adminpage/flight/flight.ejs', {
         flights,
         maxMiddleAirport: maxMiddleAirport.quantity,
         seatTypes,
-        airports
+        airports,
+        detail
     });
 }
 
