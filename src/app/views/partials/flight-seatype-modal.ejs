@@ -3,7 +3,7 @@
 <div class="form-group col-12">
     <div class="input-group mb-3">
         <div class="input-group-prepend">
-        <input type="hidden" value="<%=seatTypes[i].seatTypeCode%>" name="numberOfSeatTypes">
+        <input type="hidden" value="<%=seatTypes[i].name%>" name="numberOfSeatTypes">
             <span class="input-group-text"  id="basic-addon3"><%=seatTypes[i].name%></span>
         </div>
         <input type="number" name="numberOfSeats" class="form-control"  aria-describedby="basic-addon3" placeholder="Số lượng ghế"  min="1" max="9999"
