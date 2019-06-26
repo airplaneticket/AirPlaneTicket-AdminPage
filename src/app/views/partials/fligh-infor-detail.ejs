@@ -1,0 +1,53 @@
+<%if(typeof detail === 'object' && detail.length > 0){%>
+    <%let result=[];let seatIndex=0;let airportIndex=0;%>
+    <%for(let i=0;i<detail.length;i++) {%>
+    <tr>
+        <td><%=detail[i].flightId%></td>
+        <td><%=detail[i].flightName%></td>
+        <td>
+            <%for(let j=0;j<detail[i].numberOfSeatTypes.length;j++){%> 
+                <%if(j!==detail[i].numberOfSeatTypes.length-1){%>
+                    <%=detail[i].numberOfSeatTypes[j]%> -
+                <%}else{%>
+                    <%=detail[i].numberOfSeatTypes[j]%>
+                <%}%>
+            <%}%>
+        </td>
+        <td>
+            <%for(let j=0;j<detail[i].numberOfSeats.length;j++){%> 
+                <%if(j!==detail[i].numberOfSeats.length-1){%>
+                    <%=detail[i].numberOfSeats[j]%> -
+                <%}else{%>
+                    <%=detail[i].numberOfSeats[j]%>
+                <%}%>
+            <%}%>
+        </td>
+        <td>
+            <%if(detail[i].flightMiddleAirport.length>0){%>
+                <%for(let j=0;j<detail[i].flightMiddleAirport.length;j++){%> 
+                    <%if(j!==detail[i].flightMiddleAirport.length-1){%>
+                        <%=detail[i].flightMiddleAirport[j]%> -
+                    <%}else{%>
+                        <%=detail[i].flightMiddleAirport[j]%>
+                    <%}%>
+                <%}%>
+            <%}else{%>
+                Không có
+            <%}%>
+        </td>
+        <td>
+           <%if(detail[i].flighMiddleAirportTime.length>0){%>
+                <%for(let j=0;j<detail[i].flighMiddleAirportTime.length;j++){%> 
+                    <%if(j!==detail[i].flighMiddleAirportTime.length-1){%>
+                        <%=detail[i].flighMiddleAirportTime[j]%> -
+                    <%}else{%>
+                        <%=detail[i].flighMiddleAirportTime[j]%>
+                    <%}%>
+                <%}%>
+            <%}else{%>
+                Không có
+            <%}%>
+        </td>
+    </tr>
+    <%}%>
+<%}%>
