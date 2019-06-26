@@ -19,17 +19,10 @@ module.exports.getFlight = async(req, res) => {
     }
     for (flight of flights) {
         flight.flightDate = flight.flightDate.day + '-' + flight.flightDate.month + '-' + flight.flightDate.year;
-        let seatTypes = [];
-        for(item of flight.numberOfSeatTypes)
-        {
-            let temp;
-            temp = await seatTypeModel.findOne({seatTypeCode: item});
-            seatTypes.push(temp.name);
-        }
         let detailItem = {
-            flightId:flight.flightId,
-            flightName:flight.flightName,
-            numberOfSeatTypes: seatTypes,
+            flightId: flight.flightId,
+            flightName: flight.flightName,
+            numberOfSeatTypes: flight.numberOfSeatTypes,
             numberOfSeats: flight.numberOfSeats,
             priceOfSeats: flight.priceOfSeats,
             flightMiddleAirport: flight.flightMiddleAirport,

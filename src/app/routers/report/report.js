@@ -57,7 +57,7 @@ router.post('/year/download', reportMiddleware.postDownloadYear, async(req, res)
     let csv = await new objectToCSV(report).toString();
     let datetime = moment().format('ssmmhhDDMMYYYY');
     let file = path.join(__dirname, '..', '..', 'public', 'report', 'year', "year-" + downloadReportYear + "-report-" + datetime + ".csv");
-    fs.writeFileSync(file, csv)
+    fs.writeFileSync(file, csv);
     res.download(file);
 });
 

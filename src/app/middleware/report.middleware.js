@@ -1,4 +1,4 @@
-wconst _ = require('lodash');
+const _ = require('lodash');
 const flightModel = require('../../models/flight.model');
 
 module.exports.postDownloadMonthReport = async(req, res, next) => {
