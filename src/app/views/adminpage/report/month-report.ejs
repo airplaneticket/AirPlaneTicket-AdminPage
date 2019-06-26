@@ -81,7 +81,7 @@
                                 <div class="card-box table-responsive">
                                     <h3 class="m-t-0">
                                         Thống kê doanh thu tháng <%if(typeof selectedMonth === 'string'){%><%=selectedMonth%><%}%>
-                                        <form action="/report/month/download" method="POST" class="float-right" style="display:inline-block;">
+                                        <form action="/report/month/download" method="POST" style="display:inline-block;">
                                             <%if(typeof selectedMonth === 'string'){%>
                                                 <input type="hidden" name="downloadReportMonth"value="<%=selectedMonth%>">
                                             <%}%>
