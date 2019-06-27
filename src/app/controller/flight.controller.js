@@ -7,6 +7,8 @@ const formatData = require('../../services/formatData');
 const _ = require('lodash');
 const moment = require('moment');
 
+const tiketModel = require('../../models/ticket.model');
+
 module.exports.getFlight = async(req, res) => {
     let flights = await flightModel.find({});
     let seatTypes = await seatTypeModel.find({});
@@ -59,6 +61,7 @@ module.exports.editMaxMiddleAirport = async(req, res) => {
 module.exports.addFlight = async(req, res) => {
     try {
         let inputdata = {...req.body };
+        console.log(inputdata);
         formatData.formatDataForFlight(inputdata);
         let flight = new flightModel(inputdata);
         await flight.save();
@@ -91,6 +94,10 @@ module.exports.editFlight = async(req, res) => {
         let seatTypes = await seatTypeModel.find({});
         let airports = await airportModel.find({});
         let maxMiddleAirport = await maxMiddleAirportModel.findOne({ id: 'PDAirline' });
+        flight = flight.toObject();
+        if (flight.flightDate.month <= 9) {
+            flight.flightDate = flight.flightDate.year + "-0" + flight.flightDate.month + "-" + flight.flightDate.day;
+        } else { flight.flightDate = flight.flightDate.year + "-" + flight.flightDate.month + "-" + flight.flightDate.day; }
         res.render("adminpage/flight/edit-flight.ejs", {
             flight,
             seatTypes,

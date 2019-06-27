@@ -25,6 +25,11 @@ let ticketSchema = new mongoose.Schema({
 ticketSchema.methods.saveForReport = async(ticket) => {
     let flight = await flightModel.findOne({ flightId: ticket.flightId });
     let newFlight = flight.toObject();
+    for (let i = 0; i < newFlight.seatTypeBoughts.length; i++) {
+        if (newFlight.seatTypeBoughts[i].seatType === ticket.seatType) {
+            newFlight.seatTypeBoughts[i].quantity += 1;
+        }
+    }
     newFlight.boughtSeat += 1;
     newFlight.income += ticket.price;
     _.assign(flight, newFlight);
