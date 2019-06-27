@@ -9,7 +9,7 @@
         <input type="number" name="numberOfSeats" class="form-control"  aria-describedby="basic-addon3" placeholder="Số lượng ghế"  min="1" max="9999"
         <%if(typeof flight === 'object'){%>
             <%for(let j=0;j<flight.numberOfSeatTypes.length;j++){%>
-                <%if(seatTypes[i].seatTypeCode ===  flight.numberOfSeatTypes[j]){%>
+                <%if(seatTypes[i].name ===  flight.numberOfSeatTypes[j]){%>
                     value="<%=flight.numberOfSeats[j]%>"
         <%}}}%>>
         <div class="input-group-prepend ml-2">
@@ -18,7 +18,7 @@
         <input type="number" name="priceOfSeats" class="form-control" placeholder="Giá"
         <%if(typeof flight === 'object'){%>
             <%for(let j=0;j<flight.numberOfSeatTypes.length;j++){%>
-                <%if(seatTypes[i].seatTypeCode ===  flight.numberOfSeatTypes[j]){%>
+                <%if(seatTypes[i].name ===  flight.numberOfSeatTypes[j]){%>
                     value="<%=flight.priceOfSeats[j]%>"
         <%}}}%>>
     </div>
