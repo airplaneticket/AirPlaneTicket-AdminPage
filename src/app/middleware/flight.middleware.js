@@ -52,6 +52,7 @@ module.exports.isRightData = (req, res, next) => {
 module.exports.addFlight = async(req, res, next) => {
     let inputData = req.inputData;
     let inputTime = inputData.flightDate + "T" + inputData.flightDepartTime + ":00";
+    console.log(inputTime);
     if (moment(inputTime).isBefore(moment())) {
         req.flash("error", "Vui lòng nhập giờ khởi hành lớn hơn hiện tại");
         res.redirect('/flight');

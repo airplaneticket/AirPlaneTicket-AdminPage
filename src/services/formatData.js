@@ -35,6 +35,14 @@ module.exports.formatDataForFlight = async(inputdata) => {
 
     //formart for number of seat
     inputdata.numberOfSeats.map(num => parseInt(num));
+    inputdata.seatTypeBoughts = [];
+    for (i = 0; i < inputdata.numberOfSeatTypes.length; i++) {
+        let temp = {
+            seatType: inputdata.numberOfSeatTypes[i],
+            quantity: 0
+        }
+        inputdata.seatTypeBoughts.push(temp);
+    }
 
     //formart for flightDate
     let flightDate = inputdata.flightDate.split('-').map(num => parseInt(num));
@@ -42,5 +50,4 @@ module.exports.formatDataForFlight = async(inputdata) => {
     inputdata.flightDate.year = flightDate[0];
     inputdata.flightDate.month = flightDate[1];
     inputdata.flightDate.day = flightDate[2];
-    console.log(inputdata);
 }

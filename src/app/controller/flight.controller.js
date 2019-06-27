@@ -7,6 +7,8 @@ const formatData = require('../../services/formatData');
 const _ = require('lodash');
 const moment = require('moment');
 
+const tiketModel = require('../../models/ticket.model');
+
 module.exports.getFlight = async(req, res) => {
     let flights = await flightModel.find({});
     let seatTypes = await seatTypeModel.find({});
@@ -30,6 +32,15 @@ module.exports.getFlight = async(req, res) => {
         };
         detail.push(detailItem)
     }
+    let test = {
+        flightId: '1',
+        userId: '1',
+        price: 100,
+        seatType: 'HangGhe1'
+    }
+    let test2 = new tiketModel(test);
+    await test2.save();
+    await test2.saveForReport(test);
     res.render('adminpage/flight/flight.ejs', {
         flights,
         maxMiddleAirport: maxMiddleAirport.quantity,
