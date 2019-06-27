@@ -39,7 +39,8 @@ module.exports.formatDataForFlight = async(inputdata) => {
     for (i = 0; i < inputdata.numberOfSeatTypes.length; i++) {
         let temp = {
             seatType: inputdata.numberOfSeatTypes[i],
-            quantity: 0
+            quantity: 0,
+            max: inputdata.numberOfSeats[i]
         }
         inputdata.seatTypeBoughts.push(temp);
     }
