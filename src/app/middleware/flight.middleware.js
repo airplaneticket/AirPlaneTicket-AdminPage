@@ -52,11 +52,6 @@ module.exports.isRightData = (req, res, next) => {
 module.exports.addFlight = async(req, res, next) => {
     let inputData = req.inputData;
     let inputTime = inputData.flightDate + "T" + inputData.flightDepartTime + ":00";
-    console.log(inputTime);
-    if (moment(inputTime).isBefore(moment())) {
-        req.flash("error", "Vui lòng nhập giờ khởi hành lớn hơn hiện tại");
-        res.redirect('/flight');
-    }
     let totalFlightMiddleAirportTime = 0;
     let flightTime = inputData.flightTime.split(":").map(num => parseInt(num));
     flightTime = flightTime[0] * 60 + flightTime[1];
@@ -66,25 +61,34 @@ module.exports.addFlight = async(req, res, next) => {
             totalFlightMiddleAirportTime = splitTime[0] * 60 + splitTime[1];
         }
     }
-
-    if (flightTime < totalFlightMiddleAirportTime) {
-        req.flash("error", "Thời gian bay bé hơn thời gian ở sân bay trung gian! Xin kiểm tra lại");
-        res.redirect('/flight');
-    }
     let flight = await flightModel.findOne({ $or: [{ flightId: inputData.flightId }, { flightName: inputData.flightName }] });
-    if (flight) {
+    if (moment(inputTime).isBefore(moment())) {
+        req.flash("error", "Vui lòng nhập giờ khởi hành lớn hơn hiện tại");
+        res.redirect('/flight');
+        return;
+    }
+    else if (flight) {
         req.flash("error", "Chuyến bay đã có trong cơ sở dữ liệu");
         res.redirect('/flight');
         return;
     }
-    inputData.flightDate = moment(inputTime).format();
-    req.inputData = inputData;
-    next();
+    else if (flightTime < totalFlightMiddleAirportTime) {
+        req.flash("error", "Thời gian bay bé hơn thời gian ở sân bay trung gian! Xin kiểm tra lại");
+        res.redirect('/flight');
+        return;
+    } else
+    {
+        inputData.flightDate = moment(inputTime).format();
+        req.inputData = inputData;
+        next();
+    }
+    
 }
 
 module.exports.saveEditFlight = async(req, res, next) => {
     let inputData = {...req.body };
     let oldData = await flightModel.findOne({ flightId: inputData.flightId });
+    let checkData = await flightModel.findOne({flightName: inputData.flightName});
     oldData = oldData.toObject();
     formatData.formatDataForFlight(inputData);
     delete oldData._id;
@@ -92,9 +96,14 @@ module.exports.saveEditFlight = async(req, res, next) => {
     if (_.isEqual(oldData, inputData)) {
         req.flash("error", "Thông tin chuyến bay không thay đổi");
         res.redirect('/flight');
-    } else {
+        return;
+    } else if(checkData.flightId !== oldData.flightId){
+        req.flash("error", "Tên chuyến bay đã có trong cơ sở dữ liệu");
+        res.redirect('/flight');
+        return;
+    }
+    else{
         req.inputData = inputData;
         next();
     }
-
 }

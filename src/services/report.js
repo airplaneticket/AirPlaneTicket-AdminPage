@@ -1,17 +1,23 @@
 const flightModel = require('../models/flight.model');
+const moment = require('moment');
 
 module.exports.monthReport = async(selectedMonth) => {
     try {
-        let flights = await flightModel.find({ 'flightDate.month': parseInt(selectedMonth) });
+        let currentYear = parseInt(moment().format('YYYY'));
+        let flights = await flightModel.find({ $and:[{'flightDate.month': parseInt(selectedMonth)}, 
+                {'flightDate.year': parseInt(currentYear)}]});
         let report = [];
         let totalIncome = 0;
+        let ratio = 0;
         for (flight of flights) {
             totalIncome += flight.income;
         }
         for (let i = 0; i < flights.length; i++) {
             let flight = flights[i].toObject();
-            let ratio = flight.income / totalIncome;
-            ratio = ratio.toFixed(2) * 100;
+            if (totalIncome !== 0) {
+                ratio = monthIncome / totalIncome;
+                ratio = ratio.toFixed(2) * 100;
+            }
             let saveFlight = {
                 flightName: flight.flightName,
                 boughtSeat: flight.boughtSeat,
@@ -46,7 +52,7 @@ module.exports.yearReport = async(selectedYear) => {
                     monthIncome += flight.income;
                 }
             }
-            if (totalIncome != 0) {
+            if (totalIncome !== 0) {
                 ratio = monthIncome / totalIncome;
                 ratio = ratio.toFixed(2) * 100;
             }

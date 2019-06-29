@@ -28,12 +28,6 @@ adminSchema.methods.isRightPassword = async function(password) {
     return bcrypt.compare(password, this.password);
 }
 
-adminSchema.methods.forgotPassword = async function(hashString) {
-    return bcrypt.hash(hashString, saltRound)
-        .then((hash) => {
-            this.password = hash;
-        });
-}
 
 let adminModel = mongoose.model('adminModel', adminSchema, 'Admins');
 
