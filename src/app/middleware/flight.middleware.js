@@ -8,25 +8,28 @@ module.exports.isRightData = (req, res, next) => {
         ...req.body
     };
     let error;
-    for (let i = 0; i < inputData.flightMiddleAirport.length; i++) {
-        if (inputData.flightMiddleAirport[i] !== 'Chọn sân bay trung gian') {
-            if (_.isEmpty(inputData.flightMiddleAirportTime[i])) {
-                error = 'Vui lòng nhập thời gian ở sân bay trung gian ' + inputData.flightMiddleAirport[i];
-            }
-            for (let j = 0; j < inputData.flightMiddleAirport.length; j++) {
-                if (inputData.flightMiddleAirport[i] === inputData.flightMiddleAirport[j] && j !== i) {
-                    error = 'Vui lòng chọn sân bay trung gian khác nhau';
+    if (typeof inputData.flightMiddleAirport === 'object') {
+        for (let i = 0; i < inputData.flightMiddleAirport.length; i++) {
+            if (inputData.flightMiddleAirport[i] !== 'Chọn sân bay trung gian') {
+                if (_.isEmpty(inputData.flightMiddleAirportTime[i])) {
+                    error = 'Vui lòng nhập thời gian ở sân bay trung gian ' + inputData.flightMiddleAirport[i];
+                }
+                for (let j = 0; j < inputData.flightMiddleAirport.length; j++) {
+                    if (inputData.flightMiddleAirport[i] === inputData.flightMiddleAirport[j] && j !== i) {
+                        error = 'Vui lòng chọn sân bay trung gian khác nhau';
+                    }
                 }
             }
         }
-
     }
     let isInputSeatType = false;
-    for (let i = 0; i < inputData.numberOfSeats.length; i++) {
-        if (!_.isEmpty(inputData.numberOfSeats[i])) {
-            isInputSeatType = true;
-            if (_.isEmpty(inputData.priceOfSeats[i])) {
-                error = 'Vui lòng nhập giá của hạng ghế ' + inputData.numberOfSeatTypes[i];
+    if (typeof inputData.numberOfSeats === 'object') {
+        for (let i = 0; i < inputData.numberOfSeats.length; i++) {
+            if (!_.isEmpty(inputData.numberOfSeats[i])) {
+                isInputSeatType = true;
+                if (_.isEmpty(inputData.priceOfSeats[i])) {
+                    error = 'Vui lòng nhập giá của hạng ghế ' + inputData.numberOfSeatTypes[i];
+                }
             }
         }
     }
@@ -66,29 +69,26 @@ module.exports.addFlight = async(req, res, next) => {
         req.flash("error", "Vui lòng nhập giờ khởi hành lớn hơn hiện tại");
         res.redirect('/flight');
         return;
-    }
-    else if (flight) {
+    } else if (flight) {
         req.flash("error", "Chuyến bay đã có trong cơ sở dữ liệu");
         res.redirect('/flight');
         return;
-    }
-    else if (flightTime < totalFlightMiddleAirportTime) {
+    } else if (flightTime < totalFlightMiddleAirportTime) {
         req.flash("error", "Thời gian bay bé hơn thời gian ở sân bay trung gian! Xin kiểm tra lại");
         res.redirect('/flight');
         return;
-    } else
-    {
+    } else {
         inputData.flightDate = moment(inputTime).format();
         req.inputData = inputData;
         next();
     }
-    
+
 }
 
 module.exports.saveEditFlight = async(req, res, next) => {
     let inputData = {...req.body };
     let oldData = await flightModel.findOne({ flightId: inputData.flightId });
-    let checkData = await flightModel.findOne({flightName: inputData.flightName});
+    let checkData = await flightModel.findOne({ flightName: inputData.flightName });
     oldData = oldData.toObject();
     formatData.formatDataForFlight(inputData);
     delete oldData._id;
@@ -97,12 +97,11 @@ module.exports.saveEditFlight = async(req, res, next) => {
         req.flash("error", "Thông tin chuyến bay không thay đổi");
         res.redirect('/flight');
         return;
-    } else if(checkData.flightId !== oldData.flightId){
+    } else if (checkData.flightId !== oldData.flightId) {
         req.flash("error", "Tên chuyến bay đã có trong cơ sở dữ liệu");
         res.redirect('/flight');
         return;
-    }
-    else{
+    } else {
         req.inputData = inputData;
         next();
     }
