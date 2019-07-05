@@ -7,6 +7,7 @@
 ## Đồ án và các chức năng
   - Tên đồ án: Bán vé chuyến bay
   - Các chức năng
+  
     ![Chức năng của websỉte](https://i.imgur.com/MyAiC20.png)
 ## Công nghệ sử dụng
   - Nodejs (Framework ExpressJS)
