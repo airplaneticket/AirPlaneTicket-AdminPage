@@ -14,11 +14,12 @@
   - Mongodb
   - HTML5 CSS3 Jqurey
 ## Kiến trúc của đồ án
-  - Mô hình MVC (Model-View-Controller)
+  - Mô hình MVC (Model-View-Controller) - View First
     ![Kiến trúc](https://i.imgur.com/QboPAE5.png)
 
 ## Khảo sát hiện trạng
-1. Đối nội:
+1. Đối nội
+
     ![Đối nội](https://i.imgur.com/2udj1fE.png)
 
   - Trụ sở chính: chia thành 2 phòng ban
@@ -29,7 +30,7 @@
     +	Hệ thống marketing online: được công ty thuê marketing khi có hoạch marketing online từ phòng marketing
 -	Hệ thống các phòng bán vé vệ tinh: Các phòng vé nhỏ tại các tỉnh, thành phố
 
-2. Đối ngoại:
+2. Đối ngoại
   -	Đại lý cấp chính của hãng hàng không: Vietjet Air, Jetstar Pacific
 -	Đối tác với các hãng hàng không:
     +	Vietnam Airlines
