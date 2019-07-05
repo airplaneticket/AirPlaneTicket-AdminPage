@@ -54,7 +54,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="p-20">
-                                            <%if(typeof flight === 'object'){%>
+                                            <%if(typeof editFlight === 'object'){%>
                                                 <form role="form" action="/flight/saveEditFlight" method="POST">
 
                                                 <!-- Modal Hang Ghe -->
@@ -94,14 +94,14 @@
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Mã chuyến bay</label>
                                                         <div class="col-10">
-                                                            <input name="flightId" type="text" readonly class="form-control" placeholder="Mã chuyến bay" value="<%=flight.flightId%>" readonly required>
+                                                            <input name="flightId" type="text" readonly class="form-control" placeholder="Mã chuyến bay" value="<%=editFlight.flightId%>" readonly required>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Tên chuyến bay</label>
                                                         <div class="col-10">
-                                                            <input name="flightName" type="text" class="form-control" placeholder="Tên chuyến bay" value="<%=flight.flightName%>" required>
+                                                            <input name="flightName" type="text" class="form-control" placeholder="Tên chuyến bay" value="<%=editFlight.flightName%>" required>
                                                         </div>
                                                     </div>
 
@@ -111,10 +111,10 @@
                                                             <select name="flightFrom" class="custom-select form-control" required>
                                                                 <%if(typeof airports ==="object" && airports.length>0){%>
                                                                     <%for(item of airports){%>
-                                                                        <%if(item.airportName !== flight.flightFrom){%>
+                                                                        <%if(item.airportName !== editFlight.flightFrom){%>
                                                                             <option><%=item.airportName%></option>
                                                                         <%}else{%>
-                                                                            <option selected><%=flight.flightFrom%></option>
+                                                                            <option selected><%=editFlight.flightFrom%></option>
                                                                         <%}%>
                                                                     <%}%>
                                                                 <%}%>
@@ -125,10 +125,10 @@
                                                             <select class="custom-select form-control" name="flightDestination" required>
                                                                 <%if(typeof airports ==="object" && airports.length>0){%>
                                                                     <%for(item of airports){%>
-                                                                        <%if(item.airportName !== flight.flightDestination){%>
+                                                                        <%if(item.airportName !== editFlight.flightDestination){%>
                                                                             <option><%=item.airportName%></option>
                                                                         <%}else{%>
-                                                                            <option selected="selected"><%=flight.flightDestination%></option>
+                                                                            <option selected="selected"><%=editFlight.flightDestination%></option>
                                                                         <%}%>
                                                                     <%}%>
                                                                 <%}%>
@@ -139,17 +139,17 @@
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Khởi hành</label>
                                                         <div class="col-5">
-                                                            <input class="form-control" type="time" name="flightDepartTime" value="<%=flight.flightDepartTime%>" required>
+                                                            <input class="form-control" type="time" name="flightDepartTime" value="<%=editFlight.flightDepartTime%>" required>
                                                         </div>
                                                         <div class="col-5">
-                                                            <input class="form-control" type="date" name="flightDate" value="<%=flight.flightDate%>" required>
+                                                            <input class="form-control" type="date" name="flightDate" value="<%=editFlight.flightDate%>"  data-date-format="dd mm yyyy" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="col-2 col-form-label">Thời gian bay</label>
                                                         <div class="col-md-10">
-                                                            <input class="form-control" type="time" name="flightTime" value="<%=flight.flightTime%>" required>
+                                                            <input class="form-control" type="time" name="flightTime" value="<%=editFlight.flightTime%>"  required>
                                                         </div>
                                                     </div>
 

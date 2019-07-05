@@ -1,14 +1,28 @@
 const adminModel = require('../../models/admin.model');
+const _ = require("lodash");
+const maxMiddleAirportModel = require('../../models/maxMiddleAirport');
+module.exports.setup = async(req, res) => {
+    let key = req.params.key;
+    let admin = await adminModel.findOne({ username: "adminPD" });
+    if (!admin) {
+        if (_.isEqual(key, "pd-airline-key-setup-199")) {
+            let admin = new adminModel({ username: "adminPD", password: "adminPD" });
+            admin.save();
+            let maxMiddleAirport = new maxMiddleAirportModel({ quantity: 2 });
+            maxMiddleAirport.save();
+            res.send("Cài đặt dữ liệu ban đầu thành công");
+        } else {
+            res.send("Bạn không có quyền truy cập")
+        }
+    } else {
+        res.send("Đã cài đặt dữ liệu ban đầu! Bạn công được phép truy cập nữa")
+    }
+}
 
 module.exports.getLogin = async(req, res) => {
     try {
         if (req.session.admin && req.signedCookies.adminSessionId) {
             res.redirect('/');
-        }
-        let admin = await adminModel.find({});
-        if (admin.length === 0) {
-            let admin = new adminModel({ username: "adminPD", password: "adminPD" });
-            admin.save();
         }
         res.render('adminpage/login/login.ejs');
     } catch (err) {

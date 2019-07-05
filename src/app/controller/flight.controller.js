@@ -10,35 +10,38 @@ const moment = require('moment');
 const tiketModel = require('../../models/ticket.model');
 
 module.exports.getFlight = async(req, res) => {
-    let flights = await flightModel.find({});
-    let seatTypes = await seatTypeModel.find({});
-    let airports = await airportModel.find({});
-    let maxMiddleAirport = await maxMiddleAirportModel.findOne({ id: 'PDAirline' });
-    let detail = [];
-    if (maxMiddleAirport == null) {
-        let maxMiddleAirport = new maxMiddleAirportModel({ quantity: 2 });
-        maxMiddleAirport.save();
+    try {
+        let flights = await flightModel.find({});
+        let seatTypes = await seatTypeModel.find({});
+        let airports = await airportModel.find({});
+        let maxMiddleAirport = await maxMiddleAirportModel.findOne({ id: "PDAirline" })
+        let detail = [];
+        for (flight of flights) {
+            flight.flightDate = flight.flightDate.day + '-' + flight.flightDate.month + '-' + flight.flightDate.year;
+            let detailItem = {
+                flightId: flight.flightId,
+                flightName: flight.flightName,
+                numberOfSeatTypes: flight.numberOfSeatTypes,
+                numberOfSeats: flight.numberOfSeats,
+                priceOfSeats: flight.priceOfSeats,
+                flightMiddleAirport: flight.flightMiddleAirport,
+                flighMiddleAirportTime: flight.flightMiddleAirportTime,
+            };
+            detail.push(detailItem)
+        }
+        res.render('adminpage/flight/flight.ejs', {
+            flights,
+            maxMiddleAirport: maxMiddleAirport.quantity,
+            seatTypes,
+            airports,
+            detail
+        });
+
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).send('server error');
     }
-    for (flight of flights) {
-        flight.flightDate = flight.flightDate.day + '-' + flight.flightDate.month + '-' + flight.flightDate.year;
-        let detailItem = {
-            flightId: flight.flightId,
-            flightName: flight.flightName,
-            numberOfSeatTypes: flight.numberOfSeatTypes,
-            numberOfSeats: flight.numberOfSeats,
-            priceOfSeats: flight.priceOfSeats,
-            flightMiddleAirport: flight.flightMiddleAirport,
-            flighMiddleAirportTime: flight.flightMiddleAirportTime,
-        };
-        detail.push(detailItem)
-    }
-    res.render('adminpage/flight/flight.ejs', {
-        flights,
-        maxMiddleAirport: maxMiddleAirport.quantity,
-        seatTypes,
-        airports,
-        detail
-    });
 }
 
 
@@ -90,16 +93,18 @@ module.exports.deleteFlight = async(req, res) => {
 module.exports.editFlight = async(req, res) => {
     try {
         let flightObjectId = req.body.flightObjectId;
-        let flight = await flightModel.findById(flightObjectId);
+        let editFlight = await flightModel.findById(flightObjectId);
         let seatTypes = await seatTypeModel.find({});
         let airports = await airportModel.find({});
         let maxMiddleAirport = await maxMiddleAirportModel.findOne({ id: 'PDAirline' });
-        flight = flight.toObject();
-        if (flight.flightDate.month <= 9) {
-            flight.flightDate = flight.flightDate.year + "-0" + flight.flightDate.month + "-" + flight.flightDate.day;
-        } else { flight.flightDate = flight.flightDate.year + "-" + flight.flightDate.month + "-" + flight.flightDate.day; }
+        editFlight = editFlight.toObject();
+        if (editFlight.flightDate.month <= 9) {
+            editFlight.flightDate = editFlight.flightDate.year + "-0" + editFlight.flightDate.month + "-" + editFlight.flightDate.day;
+        } else {
+            editFlight.flightDate = editFlight.flightDate.year + "-" + editFlight.flightDate.month + "-" + editFlight.flightDate.day;
+        }
         res.render("adminpage/flight/edit-flight.ejs", {
-            flight,
+            editFlight,
             seatTypes,
             airports,
             maxMiddleAirport: maxMiddleAirport.quantity
