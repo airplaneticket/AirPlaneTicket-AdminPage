@@ -8,10 +8,10 @@ module.exports.postDownloadMonthReport = async(req, res, next) => {
         if (downloadReportMonth === '') {
             req.flash('error', 'Chưa có thống kê hiển thị để xuất báo cáo');
             res.redirect('/report/month');
+            return;
         } else if (flights.length <= 0) {
             req.flash('error', 'Không có dữ liệu để xuất báo cáo');
             res.redirect('/report/month');
-        } else {
             next();
         }
     } catch (err) {

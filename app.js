@@ -31,8 +31,8 @@ app.use(session);
 app.use(flash());
 
 require('./src/app/routers/index')(app);
-app.use((req, res) => {
-    res.status(404).send('404 error');
+app.use((req,res,next)=>{
+    res.status(500).send('404ERROR')
 })
 
 app.listen(process.env.PORT);
