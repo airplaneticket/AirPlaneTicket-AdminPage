@@ -1,6 +1,5 @@
 # AirPlaneTicketManagement
 
-
 ### Đồ án môn Nhập môn công nghệ phần mềm lớp SE104.J22.PMCL - Khoa công nghệ phần mềm - Trường Đại học Công ghệ thông tin(UIT)
 
 ### Giảng viên hướng dẫn: Thầy Nguyễn Công Hoan
@@ -61,5 +60,7 @@
   - https://vietjack.com
   - https://coders.tokyo
   - https://www.w3schools.com
+  - https://youtube.com
   - http://veminhthanh.vn
-  - http://youtube.com
+## Tài liệu báo cáo:
+  - http://bit.ly/PDBaoCao
