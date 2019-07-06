@@ -1,4 +1,4 @@
-# AirPlaneTicketManagement
+# AirPlane Ticket Management
 
 ### Đồ án môn Nhập môn công nghệ phần mềm lớp SE104.J22.PMCL - Khoa công nghệ phần mềm - Trường Đại học Công ghệ thông tin(UIT)
 
